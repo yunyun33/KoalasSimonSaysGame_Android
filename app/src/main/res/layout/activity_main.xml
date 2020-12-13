@@ -40,12 +40,6 @@
             android:text="@string/start_text" />
 
         <Button
-            android:id="@+id/rankingButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ranking_text" />
-
-        <Button
             android:id="@+id/menuButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
