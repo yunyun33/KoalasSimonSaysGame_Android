@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.koalassimonsaysgame_android.playGamePage.PlayGameActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private fun transitToPlayGamePage() {
         val startButton = findViewById<Button>(R.id.startButton)
         startButton.setOnClickListener() {
-            val intent = Intent(this, PlayGame::class.java)
+            val intent = Intent(this, PlayGameActivity::class.java)
             startActivity(intent)
         }
     }

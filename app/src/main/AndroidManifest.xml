@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KoalasSimonSaysGame_android">
         <activity android:name=".Menu"></activity>
-        <activity android:name=".PlayGame" />
+        <activity android:name=".playGamePage.PlayGameActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
