@@ -8,7 +8,7 @@ interface PlayGameContract {
         fun setKoalaLeftImage()
 
         fun showCountDown(text: String)
-        fun transitToTotalScorePage()
+        fun transitToTotalScorePage(totalScore: Int)
         fun showInstructionText(text: String)
     }
 
@@ -20,5 +20,6 @@ interface PlayGameContract {
 
         fun startCountDownTimer()
         fun showNextInstruction()
+        fun getTotalScore()
     }
 }

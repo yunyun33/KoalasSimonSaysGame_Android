@@ -9,7 +9,7 @@ class TotalScoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_total_score)
 
-        val scoreText = intent.getStringExtra("totalScore")
-        findViewById<TextView>(R.id.totalScoreText).text = "あなたの得点は\n${scoreText}点です。"
+        val score = intent.getIntExtra("totalScore", 0)
+        findViewById<TextView>(R.id.totalScoreText).text = "あなたの得点は\n${score}点です。"
     }
 }

@@ -1,6 +1,7 @@
 package com.example.koalassimonsaysgame_android.playGamePage
 
 import android.os.CountDownTimer
+import android.util.Log
 
 class PlayGamePresenter (
         private  val view: PlayGameContract.View
@@ -101,5 +102,6 @@ class PlayGamePresenter (
         if ( totalScore < 0 ) {
             totalScore = 0
         }
+        Log.i("${totalScore}", "スコア")
     }
 }

@@ -65,8 +65,10 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         findViewById<ImageView>(R.id.mrKoala).setImageResource(R.drawable.koala_left)
     }
 
-    override fun transitToTotalScorePage() {
+    override fun transitToTotalScorePage(totalScore: Int) {
+        presenter.getTotalScore()
         val intent = Intent(this, TotalScoreActivity::class.java)
+        intent.putExtra("totalScore", totalScore)
         startActivity(intent)
     }
 
