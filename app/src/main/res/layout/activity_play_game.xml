@@ -69,4 +69,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/flag_down" />
 
+    <TextView
+        android:id="@+id/countDownText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="残り15秒"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="192dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
