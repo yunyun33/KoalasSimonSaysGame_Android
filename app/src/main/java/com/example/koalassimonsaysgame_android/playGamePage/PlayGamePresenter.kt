@@ -7,7 +7,7 @@ class PlayGamePresenter (
 ): PlayGameContract.Presenter {
 
     //textの値を持っておく→ボタン押されたのが合っているのか判別するため。
-    enum class instructionTexts(val id:String) {
+    enum class InstructionTexts(val id:String) {
         up ("上にあげて！"),
         down ("下にさげて！"),
         right ("右にして！"),
@@ -50,7 +50,7 @@ class PlayGamePresenter (
     }
 
     override fun showNextInstruction() {
-        var setText = instructionTexts.values().random()
+        var setText = InstructionTexts.values().random()
         view.showInstructionText("${setText.id}")
     }
 }
