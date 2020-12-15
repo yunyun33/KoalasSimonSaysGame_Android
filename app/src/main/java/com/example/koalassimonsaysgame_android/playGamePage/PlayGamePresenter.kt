@@ -74,8 +74,17 @@ class PlayGamePresenter (
     }
 
     override fun showNextInstruction() {
-        var setText = InstructionTexts.values().random()
-        view.showInstructionText("${setText.id}")
+        val nextInstruction = Direction.values().random()
+        instructionDirection = nextInstruction
+
+        val instructionText = when (nextInstruction) {
+            Direction.UP ->  "上にあげて！"
+            Direction.DOWN ->  "下にさげて！"
+            Direction.RIGHT ->  "右にして！"
+            Direction.LEFT ->  "左にして！"
+        }
+
+        view.showInstructionText(instructionText)
     }
 
     override fun getTotalScore() {
