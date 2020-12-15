@@ -6,12 +6,12 @@ class PlayGamePresenter (
         private  val view: PlayGameContract.View
 ): PlayGameContract.Presenter {
 
-    //textの値を持っておく→ボタン押されたのが合っているのか判別するため。
-    enum class InstructionTexts(val id:String) {
-        up ("上にあげて！"),
-        down ("下にさげて！"),
-        right ("右にして！"),
-        left ("左にして！")
+    //方向を示すenum classを定義
+    enum class Direction {
+        UP,
+        DOWN,
+        RIGHT,
+        LEFT
     }
 
     var okCount: Int = 0
