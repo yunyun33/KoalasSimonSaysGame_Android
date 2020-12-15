@@ -25,7 +25,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
     }
 
     private fun startCountDownTimer() {
-        object : CountDownTimer(15000, 100) {
+        object : CountDownTimer(16000, 100) {
             override fun onTick(millisUntilFinished: Long) {
                 presenter.startTimer(millisUntilFinished)
             }
