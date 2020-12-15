@@ -2,8 +2,10 @@ package com.example.koalassimonsaysgame_android.playGamePage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.koalassimonsaysgame_android.R
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
@@ -14,9 +16,21 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_game)
 
+        startCountDownTimer()
         setOnClickListener()
 
         presenter = PlayGamePresenter(this)
+    }
+
+    private fun startCountDownTimer() {
+        object : CountDownTimer(15000, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                presenter.startTimer(millisUntilFinished)
+            }
+
+            override fun onFinish() {
+            }
+        }.start()
     }
 
     private fun setOnClickListener() {
@@ -35,6 +49,12 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         findViewById<ImageButton>(R.id.flag_left).setOnClickListener() {
             presenter.didTapLeft()
         }
+    }
+
+    //PlayGameContract.View
+
+    override fun showCountDown(text: String) {
+        findViewById<TextView>(R.id.countDownText).setText(text)
     }
 
     override fun setKoalaUpImage() {

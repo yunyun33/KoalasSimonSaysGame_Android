@@ -4,6 +4,13 @@ class PlayGamePresenter (
         private  val view: PlayGameContract.View
 ): PlayGameContract.Presenter {
 
+    //PlayGameContract.Presenter
+
+    override fun startTimer(millisUntilFinished: Long) {
+        val time =  millisUntilFinished / 1000
+        view.showCountDown("残り" + time + "秒")
+    }
+
     override fun didTapUp() {
         view.setKoalaUpImage()
     }
