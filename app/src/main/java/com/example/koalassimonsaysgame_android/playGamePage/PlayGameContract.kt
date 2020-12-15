@@ -18,8 +18,7 @@ interface PlayGameContract {
         fun didTapRight()
         fun didTapLeft()
 
-        fun startTimer(millisUntilFinished: Long)
-        fun finishTimer()
+        fun startCountDownTimer()
 //        fun nextInstruction()
     }
 }

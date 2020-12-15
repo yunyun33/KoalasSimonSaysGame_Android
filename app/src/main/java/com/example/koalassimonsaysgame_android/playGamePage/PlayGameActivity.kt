@@ -18,22 +18,11 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_game)
 
-        startCountDownTimer()
         setOnClickListener()
 
         presenter = PlayGamePresenter(this)
-    }
 
-    private fun startCountDownTimer() {
-        object : CountDownTimer(16000, 100) {
-            override fun onTick(millisUntilFinished: Long) {
-                presenter.startTimer(millisUntilFinished)
-            }
-
-            override fun onFinish() {
-                presenter.finishTimer()
-            }
-        }.start()
+        presenter.startCountDownTimer()
     }
 
     private fun setOnClickListener() {
