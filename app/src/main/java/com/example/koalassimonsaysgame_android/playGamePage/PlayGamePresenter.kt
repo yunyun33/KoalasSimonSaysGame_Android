@@ -14,7 +14,11 @@ class PlayGamePresenter (
         LEFT
     }
 
+    //仮に初期値としてUPを入れる
+    var instructionDirection = Direction.UP
+    //正解カウント
     var okCount: Int = 0
+    //不正解カウント
     var ngCount: Int = 0
     var totalScore: Int = 0
 
@@ -35,42 +39,47 @@ class PlayGamePresenter (
 
     override fun didTapUp() {
         view.setKoalaUpImage()
-        showNextInstruction()
-        if ( InstructionTexts.values() == InstructionTexts.up ) {
+        if ( instructionDirection == Direction.UP ) {
             okCount += 1
         } else {
             ngCount += 1
         }
+
+        //判定が終わり、次のinstructionに進む
+        showNextInstruction()
     }
 
     override fun didTapDown() {
         view.setKoalaDownImage()
-        showNextInstruction()
-        if ( InstructionTexts.values() == InstructionTexts.down ) {
+        if ( instructionDirection == Direction.DOWN ) {
             okCount += 1
         } else {
             ngCount += 1
         }
+
+        showNextInstruction()
     }
 
     override fun didTapRight() {
         view.setKoalaRightImage()
-        showNextInstruction()
-        if ( InstructionTexts.values() == InstructionTexts.right ) {
+        if ( instructionDirection == Direction.RIGHT ) {
             okCount += 1
         } else {
             ngCount += 1
         }
+
+        showNextInstruction()
     }
 
     override fun didTapLeft() {
         view.setKoalaLeftImage()
-        showNextInstruction()
-        if ( InstructionTexts.values() == InstructionTexts.left ) {
+        if ( instructionDirection == Direction.LEFT ) {
             okCount += 1
         } else {
             ngCount += 1
         }
+
+        showNextInstruction()
     }
 
     override fun showNextInstruction() {
