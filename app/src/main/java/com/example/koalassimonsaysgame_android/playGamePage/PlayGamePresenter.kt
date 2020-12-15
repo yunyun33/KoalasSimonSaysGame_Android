@@ -17,17 +17,25 @@ class PlayGamePresenter (
 
     override fun didTapUp() {
         view.setKoalaUpImage()
+        view.showInstructionText("右にして！")
     }
 
     override fun didTapDown() {
         view.setKoalaDownImage()
+        view.showInstructionText("上あげて！")
     }
 
     override fun didTapRight() {
         view.setKoalaRightImage()
+        view.showInstructionText("左にして！")
     }
 
     override fun didTapLeft() {
         view.setKoalaLeftImage()
+        view.showInstructionText("下さげて！")
     }
+
+//    override fun nextInstruction() {
+//        view.showInstructionText("上あげて！")
+//    }
 }

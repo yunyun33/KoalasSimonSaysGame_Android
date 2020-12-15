@@ -9,6 +9,7 @@ interface PlayGameContract {
 
         fun showCountDown(text: String)
         fun transitToTotalScorePage()
+        fun showInstructionText(text: String)
     }
 
     interface  Presenter {
@@ -19,5 +20,6 @@ interface PlayGameContract {
 
         fun startTimer(millisUntilFinished: Long)
         fun finishTimer()
+//        fun nextInstruction()
     }
 }

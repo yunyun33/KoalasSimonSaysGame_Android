@@ -57,7 +57,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
     //PlayGameContract.View
 
     override fun showCountDown(text: String) {
-        findViewById<TextView>(R.id.countDownText).setText(text)
+        findViewById<TextView>(R.id.countDownText).text = text
     }
 
     override fun setKoalaUpImage() {
@@ -79,5 +79,9 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
     override fun transitToTotalScorePage() {
         val intent = Intent(this, TotalScoreActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun showInstructionText(text: String) {
+        findViewById<TextView>(R.id.instructionText).text = text
     }
 }
