@@ -6,7 +6,13 @@ class PlayGamePresenter (
         private  val view: PlayGameContract.View
 ): PlayGameContract.Presenter {
 
-    //var enum調べて　textの値を持っておく→ボタン押されたのが合っているのか判別するため。
+    //textの値を持っておく→ボタン押されたのが合っているのか判別するため。
+    enum class instructionTexts(val id:String) {
+        up ("上にあげて！"),
+        down ("下にさげて！"),
+        right ("右にして！"),
+        left ("左にして！")
+    }
 
     //PlayGameContract.Presenter
 
@@ -25,25 +31,26 @@ class PlayGamePresenter (
 
     override fun didTapUp() {
         view.setKoalaUpImage()
-        view.showInstructionText("右にして！")
+        showNextInstruction()
     }
 
     override fun didTapDown() {
         view.setKoalaDownImage()
-        view.showInstructionText("上あげて！")
+        showNextInstruction()
     }
 
     override fun didTapRight() {
         view.setKoalaRightImage()
-        view.showInstructionText("左にして！")
+        showNextInstruction()
     }
 
     override fun didTapLeft() {
         view.setKoalaLeftImage()
-        view.showInstructionText("下さげて！")
+        showNextInstruction()
     }
 
-//    override fun nextInstruction() {
-//        view.showInstructionText("上あげて！")
-//    }
+    override fun showNextInstruction() {
+        var setText = instructionTexts.values().random()
+        view.showInstructionText("${setText.id}")
+    }
 }

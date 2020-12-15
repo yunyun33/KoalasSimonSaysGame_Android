@@ -2,7 +2,6 @@ package com.example.koalassimonsaysgame_android.playGamePage
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,6 +22,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         presenter = PlayGamePresenter(this)
 
         presenter.startCountDownTimer()
+        presenter.showNextInstruction()
     }
 
     private fun setOnClickListener() {

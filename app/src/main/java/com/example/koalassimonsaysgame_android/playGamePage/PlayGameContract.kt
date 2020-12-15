@@ -19,6 +19,6 @@ interface PlayGameContract {
         fun didTapLeft()
 
         fun startCountDownTimer()
-//        fun nextInstruction()
+        fun showNextInstruction()
     }
 }
