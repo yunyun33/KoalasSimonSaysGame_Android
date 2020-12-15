@@ -11,6 +11,10 @@ class PlayGamePresenter (
         view.showCountDown("残り" + time + "秒")
     }
 
+    override fun finishTimer() {
+        view.transitToTotalScorePage()
+    }
+
     override fun didTapUp() {
         view.setKoalaUpImage()
     }

@@ -8,6 +8,7 @@ interface PlayGameContract {
         fun setKoalaLeftImage()
 
         fun showCountDown(text: String)
+        fun transitToTotalScorePage()
     }
 
     interface  Presenter {

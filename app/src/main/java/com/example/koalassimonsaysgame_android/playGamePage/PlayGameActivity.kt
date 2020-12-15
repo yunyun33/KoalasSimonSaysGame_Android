@@ -1,12 +1,14 @@
 package com.example.koalassimonsaysgame_android.playGamePage
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.koalassimonsaysgame_android.R
+import com.example.koalassimonsaysgame_android.TotalScoreActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
@@ -29,6 +31,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
             }
 
             override fun onFinish() {
+                presenter.finishTimer()
             }
         }.start()
     }
@@ -71,5 +74,10 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
     override fun setKoalaLeftImage() {
         findViewById<ImageView>(R.id.mrKoala).setImageResource(R.drawable.koala_left)
+    }
+
+    override fun transitToTotalScorePage() {
+        val intent = Intent(this, TotalScoreActivity::class.java)
+        startActivity(intent)
     }
 }
