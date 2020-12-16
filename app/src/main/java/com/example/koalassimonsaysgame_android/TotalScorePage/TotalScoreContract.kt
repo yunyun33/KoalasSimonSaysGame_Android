@@ -6,6 +6,6 @@ interface TotalScoreContract {
     }
 
     interface Presenter {
-        
+
     }
 }

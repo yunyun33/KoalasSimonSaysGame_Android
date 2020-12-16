@@ -33,6 +33,11 @@ class PlayGamePresenter (
             }
 
             override fun onFinish() {
+                totalScore = okCount - ngCount
+                if ( totalScore < 0 ) {
+                    totalScore = 0
+                }
+                Log.i("${totalScore}", "スコア")
                 view.transitToTotalScorePage(totalScore)
             }
         }.start()
@@ -95,13 +100,5 @@ class PlayGamePresenter (
         }
 
         view.showInstructionText(instructionText)
-    }
-
-    override fun getTotalScore() {
-        totalScore = okCount - ngCount
-        if ( totalScore < 0 ) {
-            totalScore = 0
-        }
-        Log.i("${totalScore}", "スコア")
     }
 }

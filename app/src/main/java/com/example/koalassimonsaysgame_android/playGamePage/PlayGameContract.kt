@@ -20,6 +20,5 @@ interface PlayGameContract {
 
         fun startCountDownTimer()
         fun showNextInstruction()
-        fun getTotalScore()
     }
 }
