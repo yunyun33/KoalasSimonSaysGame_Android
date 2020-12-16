@@ -27,6 +27,11 @@ class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         }
     }
 
+    //Android端末の戻るボタン無効化
+    override fun onBackPressed() {
+        //中身を空にすることで戻るボタンが無効化される。
+    }
+
     //PlayGameContract.View
 
     override fun showTotalScore(scoreText: String) {
