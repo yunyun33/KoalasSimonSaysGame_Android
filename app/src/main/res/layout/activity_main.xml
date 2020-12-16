@@ -13,32 +13,46 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@id/menuBox"
+        app:layout_constraintBottom_toTopOf="@id/startButtonBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/title" />
 
-    <LinearLayout
-        android:id="@+id/menuBox"
-        android:layout_width="389dp"
-        android:layout_height="423dp"
+    <RelativeLayout
+        android:id="@+id/startButtonBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        <Button
+        <ImageButton
             android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/menu_icon" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/start_text" />
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:text="@string/start_text"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

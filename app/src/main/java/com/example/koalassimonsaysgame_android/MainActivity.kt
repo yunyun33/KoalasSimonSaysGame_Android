@@ -3,7 +3,7 @@ package com.example.koalassimonsaysgame_android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import com.example.koalassimonsaysgame_android.playGamePage.PlayGameActivity
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun transitToPlayGamePage() {
-        val startButton = findViewById<Button>(R.id.startButton)
+        val startButton = findViewById<ImageButton>(R.id.startButton)
         startButton.setOnClickListener() {
             val intent = Intent(this, PlayGameActivity::class.java)
             startActivity(intent)
