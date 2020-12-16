@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.koalassimonsaysgame_android.R
-import com.example.koalassimonsaysgame_android.playGamePage.PlayGameContract
-import com.example.koalassimonsaysgame_android.playGamePage.PlayGamePresenter
 
 class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 
