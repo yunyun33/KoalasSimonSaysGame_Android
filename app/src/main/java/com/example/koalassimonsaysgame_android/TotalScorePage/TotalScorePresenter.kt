@@ -1,11 +1,22 @@
 package com.example.koalassimonsaysgame_android.TotalScorePage
 
+import android.content.Intent
+
 class TotalScorePresenter (
-        private val view: TotalScoreContract.View
+        private val view: TotalScoreContract.View,
+        intent: Intent
 ): TotalScoreContract.Presenter {
 
+    // 前の画面から渡されたtotalScoreを取得する。
+    private val totalScore: Int = intent.getIntExtra("totalScore", 0)
 
     private val koalaMessage = getKoalaMessage(totalScore)
+
+    //PlayGameContract.Presenter
+
+    override fun getTotalScore() {
+        view.showTotalScore("あなたの得点は\n${totalScore}点です。")
+    }
 
     override fun getKoalaMessage() {
         view.showKoalaMessage(koalaMessage)

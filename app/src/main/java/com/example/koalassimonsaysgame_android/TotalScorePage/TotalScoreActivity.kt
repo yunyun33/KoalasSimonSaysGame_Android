@@ -15,10 +15,15 @@ class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_total_score)
 
-        val score = intent.getIntExtra("totalScore", 0)
-        findViewById<TextView>(R.id.totalScoreText).text = "あなたの得点は\n${score}点です。"
+        presenter = TotalScorePresenter(this, intent)
+    }
 
-        presenter = TotalScorePresenter(this)
+    //PlayGameContract.View
+
+    override fun showTotalScore(scoreText: String) {
+        findViewById<TextView>(R.id.totalScoreText).text = scoreText
+    }
+
     override fun showKoalaMessage(messageText: String) {
         findViewById<TextView>(R.id.koalaMessageText).text = messageText
     }
