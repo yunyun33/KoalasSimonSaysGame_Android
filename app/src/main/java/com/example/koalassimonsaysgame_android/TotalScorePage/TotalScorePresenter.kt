@@ -22,6 +22,10 @@ class TotalScorePresenter (
         view.showKoalaMessage(koalaMessage)
     }
 
+    override fun didTapTransitToTopPage() {
+        view.transitToTopPage()
+    }
+
     //コアラさんのコメント
     private fun getKoalaMessage(totalScore: Int) : String {
         return when (totalScore) {
