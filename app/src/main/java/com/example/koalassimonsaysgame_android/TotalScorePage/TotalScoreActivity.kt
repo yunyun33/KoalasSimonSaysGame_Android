@@ -19,5 +19,7 @@ class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         findViewById<TextView>(R.id.totalScoreText).text = "あなたの得点は\n${score}点です。"
 
         presenter = TotalScorePresenter(this)
+    override fun showKoalaMessage(messageText: String) {
+        findViewById<TextView>(R.id.koalaMessageText).text = messageText
     }
 }
