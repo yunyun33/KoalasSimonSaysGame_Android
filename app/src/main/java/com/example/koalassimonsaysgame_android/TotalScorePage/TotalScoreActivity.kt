@@ -19,6 +19,9 @@ class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         setOnClickListener()
 
         presenter = TotalScorePresenter(this, intent)
+
+        presenter.getTotalScore()
+        presenter.getKoalaMessage()
     }
 
     private fun setOnClickListener() {
