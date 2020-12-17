@@ -1,10 +1,13 @@
 package com.example.koalassimonsaysgame_android.playGamePage
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.koalassimonsaysgame_android.R
+import com.example.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
@@ -17,6 +20,9 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         setOnClickListener()
 
         presenter = PlayGamePresenter(this)
+
+        presenter.startCountDownTimer()
+        presenter.showNextInstruction()
     }
 
     private fun setOnClickListener() {
@@ -37,6 +43,12 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         }
     }
 
+    //PlayGameContract.View
+
+    override fun showCountDown(text: String) {
+        findViewById<TextView>(R.id.countDownText).text = text
+    }
+
     override fun setKoalaUpImage() {
         findViewById<ImageView>(R.id.mrKoala).setImageResource(R.drawable.koala_up)
     }
@@ -51,5 +63,15 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
     override fun setKoalaLeftImage() {
         findViewById<ImageView>(R.id.mrKoala).setImageResource(R.drawable.koala_left)
+    }
+
+    override fun transitToTotalScorePage(totalScore: Int) {
+        val intent = Intent(this, TotalScoreActivity::class.java)
+        intent.putExtra("totalScore", totalScore)
+        startActivity(intent)
+    }
+
+    override fun showInstructionText(text: String) {
+        findViewById<TextView>(R.id.instructionText).text = text
     }
 }

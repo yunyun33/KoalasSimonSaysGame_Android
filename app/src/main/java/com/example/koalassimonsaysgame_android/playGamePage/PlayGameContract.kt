@@ -6,6 +6,10 @@ interface PlayGameContract {
         fun setKoalaDownImage()
         fun setKoalaRightImage()
         fun setKoalaLeftImage()
+
+        fun showCountDown(text: String)
+        fun transitToTotalScorePage(totalScore: Int)
+        fun showInstructionText(text: String)
     }
 
     interface  Presenter {
@@ -13,5 +17,8 @@ interface PlayGameContract {
         fun didTapDown()
         fun didTapRight()
         fun didTapLeft()
+
+        fun startCountDownTimer()
+        fun showNextInstruction()
     }
 }
