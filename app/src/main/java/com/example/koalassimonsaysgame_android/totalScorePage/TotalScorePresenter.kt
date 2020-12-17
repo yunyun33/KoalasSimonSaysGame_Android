@@ -14,11 +14,8 @@ class TotalScorePresenter (
 
     //PlayGameContract.Presenter
 
-    override fun getTotalScore() {
+    override fun didCreateView() {
         view.showTotalScore("あなたの得点は\n${totalScore}点です。")
-    }
-
-    override fun getKoalaMessage() {
         view.showKoalaMessage(koalaMessage)
     }
 

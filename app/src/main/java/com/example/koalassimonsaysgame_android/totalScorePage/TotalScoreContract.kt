@@ -9,9 +9,7 @@ interface TotalScoreContract {
     }
 
     interface Presenter {
-        fun getTotalScore()
-        fun getKoalaMessage()
-
+        fun didCreateView()
         fun didTapTransitToTopPage()
     }
 }
