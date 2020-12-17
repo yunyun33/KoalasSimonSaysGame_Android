@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
-    tools:context=".TotalScorePage.TotalScoreActivity">
+    tools:context=".totalScorePage.TotalScoreActivity">
 
     <ImageView
         android:id="@+id/totalScoreKoala"

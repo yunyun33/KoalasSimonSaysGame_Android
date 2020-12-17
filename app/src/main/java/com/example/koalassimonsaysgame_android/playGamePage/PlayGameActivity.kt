@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koalassimonsaysgame_android.R
-import com.example.koalassimonsaysgame_android.TotalScorePage.TotalScoreActivity
+import com.example.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 

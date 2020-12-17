@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.KoalasSimonSaysGame_android">
-        <activity android:name=".TotalScorePage.TotalScoreActivity"></activity>
+        <activity android:name=".totalScorePage.TotalScoreActivity"></activity>
         <activity android:name=".playGamePage.PlayGameActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.example.koalassimonsaysgame_android.TotalScorePage
+package com.example.koalassimonsaysgame_android.totalScorePage
 
 interface TotalScoreContract {
     interface View {
