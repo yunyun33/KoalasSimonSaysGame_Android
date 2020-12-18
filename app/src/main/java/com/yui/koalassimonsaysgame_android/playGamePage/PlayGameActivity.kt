@@ -1,4 +1,4 @@
-package com.example.koalassimonsaysgame_android.playGamePage
+package com.yui.koalassimonsaysgame_android.playGamePage
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.koalassimonsaysgame_android.R
-import com.example.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
+import com.yui.koalassimonsaysgame_android.R
+import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 

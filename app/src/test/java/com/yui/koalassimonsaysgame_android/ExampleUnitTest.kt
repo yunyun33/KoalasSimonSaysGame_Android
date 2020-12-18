@@ -1,4 +1,4 @@
-package com.example.koalassimonsaysgame_android
+package com.yui.koalassimonsaysgame_android
 
 import org.junit.Test
 

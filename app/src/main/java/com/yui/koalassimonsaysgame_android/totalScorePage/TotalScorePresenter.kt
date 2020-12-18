@@ -1,4 +1,4 @@
-package com.example.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.totalScorePage
 
 import android.content.Intent
 

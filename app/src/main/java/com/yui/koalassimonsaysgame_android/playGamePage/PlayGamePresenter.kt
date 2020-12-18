@@ -1,4 +1,4 @@
-package com.example.koalassimonsaysgame_android.playGamePage
+package com.yui.koalassimonsaysgame_android.playGamePage
 
 import android.os.CountDownTimer
 import android.util.Log

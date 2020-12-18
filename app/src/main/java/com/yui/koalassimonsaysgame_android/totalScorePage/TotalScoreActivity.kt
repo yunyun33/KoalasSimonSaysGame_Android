@@ -1,12 +1,12 @@
-package com.example.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.totalScorePage
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.koalassimonsaysgame_android.MainActivity
-import com.example.koalassimonsaysgame_android.R
+import com.yui.koalassimonsaysgame_android.MainActivity
+import com.yui.koalassimonsaysgame_android.R
 
 class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 

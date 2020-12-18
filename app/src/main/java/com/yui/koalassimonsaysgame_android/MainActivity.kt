@@ -1,10 +1,10 @@
-package com.example.koalassimonsaysgame_android
+package com.yui.koalassimonsaysgame_android
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
-import com.example.koalassimonsaysgame_android.playGamePage.PlayGameActivity
+import com.yui.koalassimonsaysgame_android.playGamePage.PlayGameActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
