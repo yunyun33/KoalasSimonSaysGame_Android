@@ -1,5 +1,6 @@
 package com.yui.koalassimonsaysgame_android.playGamePage
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -19,7 +20,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
         setOnClickListener()
 
-        presenter = PlayGamePresenter(this)
+        presenter = PlayGamePresenter(this, Context)
 
         presenter.startCountDownTimer()
         presenter.showNextInstruction()

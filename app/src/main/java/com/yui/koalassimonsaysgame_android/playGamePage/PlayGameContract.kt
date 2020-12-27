@@ -10,6 +10,7 @@ interface PlayGameContract {
         fun showCountDown(text: String)
         fun transitToTotalScorePage(totalScore: Int)
         fun showInstructionText(text: String)
+
     }
 
     interface  Presenter {
@@ -20,5 +21,7 @@ interface PlayGameContract {
 
         fun startCountDownTimer()
         fun showNextInstruction()
+
+        fun startMediaPlayer()
     }
 }

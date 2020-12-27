@@ -1,11 +1,20 @@
 package com.yui.koalassimonsaysgame_android.playGamePage
 
+import android.content.Context
+import android.media.MediaParser
+import android.media.MediaPlayer
 import android.os.CountDownTimer
 import android.util.Log
+import com.yui.koalassimonsaysgame_android.R
 
 class PlayGamePresenter (
-        private  val view: PlayGameContract.View
+        private  val view: PlayGameContract.View,
+        context: Context
 ): PlayGameContract.Presenter {
+
+    private var koalaMusic: MediaParser? = null
+    private val myContext: Context = context
+
 
     //方向を示すenum classを定義
     enum class Direction {
@@ -41,6 +50,11 @@ class PlayGamePresenter (
                 view.transitToTotalScorePage(totalScore)
             }
         }.start()
+    }
+
+    override fun startMediaPlayer() {
+        val mediaFile: MediaPlayer = MediaPlayer.create(myContext, R.raw.koala_music)
+        mediaFile.start()
     }
 
     override fun didTapUp() {
