@@ -14,14 +14,11 @@ interface PlayGameContract {
     }
 
     interface  Presenter {
+        fun didCreateView()
+
         fun didTapUp()
         fun didTapDown()
         fun didTapRight()
         fun didTapLeft()
-
-        fun startCountDownTimer()
-        fun showNextInstruction()
-
-        fun startMediaPlayer()
     }
 }

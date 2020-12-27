@@ -20,10 +20,9 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
         setOnClickListener()
 
-        presenter = PlayGamePresenter(this, Context)
+        presenter = PlayGamePresenter(this, applicationContext)
 
-        presenter.startCountDownTimer()
-        presenter.showNextInstruction()
+        presenter.didCreateView()
     }
 
     private fun setOnClickListener() {

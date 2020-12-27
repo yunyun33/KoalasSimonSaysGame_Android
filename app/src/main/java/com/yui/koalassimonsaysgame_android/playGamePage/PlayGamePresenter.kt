@@ -1,7 +1,6 @@
 package com.yui.koalassimonsaysgame_android.playGamePage
 
 import android.content.Context
-import android.media.MediaParser
 import android.media.MediaPlayer
 import android.os.CountDownTimer
 import android.util.Log
@@ -12,9 +11,7 @@ class PlayGamePresenter (
         context: Context
 ): PlayGameContract.Presenter {
 
-    private var koalaMusic: MediaParser? = null
-    private val myContext: Context = context
-
+    private val koalaMusic: MediaPlayer = MediaPlayer.create(context, R.raw.koala_music)
 
     //方向を示すenum classを定義
     enum class Direction {
@@ -34,27 +31,10 @@ class PlayGamePresenter (
 
     //PlayGameContract.Presenter
 
-    override fun startCountDownTimer() {
-        object : CountDownTimer(16000, 100) {
-            override fun onTick(millisUntilFinished: Long) {
-                val time =  millisUntilFinished / 1000
-                view.showCountDown("残り" + time + "秒")
-            }
-
-            override fun onFinish() {
-                totalScore = okCount - ngCount
-                if ( totalScore < 0 ) {
-                    totalScore = 0
-                }
-                Log.i("${totalScore}", "スコア")
-                view.transitToTotalScorePage(totalScore)
-            }
-        }.start()
-    }
-
-    override fun startMediaPlayer() {
-        val mediaFile: MediaPlayer = MediaPlayer.create(myContext, R.raw.koala_music)
-        mediaFile.start()
+    override fun didCreateView() {
+        startCountDownTimer()
+        startMediaPlayer()
+        showNextInstruction()
     }
 
     override fun didTapUp() {
@@ -102,7 +82,32 @@ class PlayGamePresenter (
         showNextInstruction()
     }
 
-    override fun showNextInstruction() {
+    //private functions
+
+    private fun startCountDownTimer() {
+        object : CountDownTimer(16000, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                val time =  millisUntilFinished / 1000
+                view.showCountDown("残り" + time + "秒")
+            }
+
+            override fun onFinish() {
+                totalScore = okCount - ngCount
+                if ( totalScore < 0 ) {
+                    totalScore = 0
+                }
+                Log.i("${totalScore}", "スコア")
+                koalaMusic.stop()
+                view.transitToTotalScorePage(totalScore)
+            }
+        }.start()
+    }
+
+    private fun startMediaPlayer() {
+        koalaMusic.start()
+    }
+
+    private fun showNextInstruction() {
         val nextInstruction = Direction.values().random()
         instructionDirection = nextInstruction
 
