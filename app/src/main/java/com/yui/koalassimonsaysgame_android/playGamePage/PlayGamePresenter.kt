@@ -36,12 +36,8 @@ class PlayGamePresenter (
 
     override fun didCreateView() {
         startCountDownTimer()
-        startMediaPlayer()
+        koalaMusic.start()
         showNextInstruction()
-    }
-
-    override fun stopMediaPlayer() {
-        koalaMusic.stop()
     }
 
     override fun didTapBackButton() {
@@ -111,14 +107,10 @@ class PlayGamePresenter (
                     totalScore = 0
                 }
                 Log.i("${totalScore}", "スコア")
-                stopMediaPlayer()
+                koalaMusic.stop()
                 view.transitToTotalScorePage(totalScore)
             }
         }.start()
-    }
-
-    private fun startMediaPlayer() {
-        koalaMusic.start()
     }
 
     private fun showNextInstruction() {
