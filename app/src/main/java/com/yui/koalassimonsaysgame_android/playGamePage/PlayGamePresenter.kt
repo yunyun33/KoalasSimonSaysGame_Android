@@ -40,6 +40,16 @@ class PlayGamePresenter (
         showNextInstruction()
     }
 
+    override fun stopMediaPlayer() {
+        koalaMusic.stop()
+    }
+
+    override fun didTapBackButton() {
+        koalaMusic.stop()
+        timer?.cancel()
+        view.transitToTopPage()
+    }
+
     override fun didTapUp() {
         view.setKoalaUpImage()
         if ( instructionDirection == Direction.UP ) {
@@ -83,14 +93,6 @@ class PlayGamePresenter (
         }
 
         showNextInstruction()
-    }
-
-    override fun stopMediaPlayer() {
-        koalaMusic.stop()
-    }
-
-    override fun resetCountDownTimer() {
-        timer?.cancel()
     }
 
     //private functions

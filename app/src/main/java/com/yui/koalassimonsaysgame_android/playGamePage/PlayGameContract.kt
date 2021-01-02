@@ -16,8 +16,8 @@ interface PlayGameContract {
 
     interface  Presenter {
         fun didCreateView()
+        fun didTapBackButton()
         fun stopMediaPlayer()
-        fun resetCountDownTimer()
 
         fun didTapUp()
         fun didTapDown()

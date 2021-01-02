@@ -47,9 +47,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         // 端末の戻るボタンでMainActivityへ戻る。
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            presenter.stopMediaPlayer()
-            presenter.resetCountDownTimer()
-            transitToTopPage()
+            presenter.didTapBackButton()
             return true
         }
         return super.onKeyDown(keyCode, event)
