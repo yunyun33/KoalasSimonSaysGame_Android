@@ -10,15 +10,17 @@ interface PlayGameContract {
         fun showCountDown(text: String)
         fun transitToTotalScorePage(totalScore: Int)
         fun showInstructionText(text: String)
+
+        fun transitToTopPage()
     }
 
     interface  Presenter {
+        fun didCreateView()
+        fun didTapBackButton()
+
         fun didTapUp()
         fun didTapDown()
         fun didTapRight()
         fun didTapLeft()
-
-        fun startCountDownTimer()
-        fun showNextInstruction()
     }
 }

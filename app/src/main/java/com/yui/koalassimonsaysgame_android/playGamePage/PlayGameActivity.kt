@@ -2,10 +2,12 @@ package com.yui.koalassimonsaysgame_android.playGamePage
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
@@ -19,10 +21,9 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
         setOnClickListener()
 
-        presenter = PlayGamePresenter(this)
+        presenter = PlayGamePresenter(this, applicationContext)
 
-        presenter.startCountDownTimer()
-        presenter.showNextInstruction()
+        presenter.didCreateView()
     }
 
     private fun setOnClickListener() {
@@ -41,6 +42,15 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         findViewById<ImageButton>(R.id.flag_left).setOnClickListener() {
             presenter.didTapLeft()
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // 端末の戻るボタンでMainActivityへ戻る。
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            presenter.didTapBackButton()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     //PlayGameContract.View
@@ -73,5 +83,10 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
     override fun showInstructionText(text: String) {
         findViewById<TextView>(R.id.instructionText).text = text
+    }
+
+    override fun transitToTopPage() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

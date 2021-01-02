@@ -1,11 +1,17 @@
 package com.yui.koalassimonsaysgame_android.playGamePage
 
+import android.content.Context
+import android.media.MediaPlayer
 import android.os.CountDownTimer
 import android.util.Log
+import com.yui.koalassimonsaysgame_android.R
 
 class PlayGamePresenter (
-        private  val view: PlayGameContract.View
+        private  val view: PlayGameContract.View,
+        context: Context
 ): PlayGameContract.Presenter {
+
+    private val koalaMusic: MediaPlayer = MediaPlayer.create(context, R.raw.koala_music)
 
     //方向を示すenum classを定義
     enum class Direction {
@@ -23,24 +29,21 @@ class PlayGamePresenter (
     var ngCount: Int = 0
     var totalScore: Int = 0
 
+    //CountDownTimerの値
+    private var timer: CountDownTimer? = null
+
     //PlayGameContract.Presenter
 
-    override fun startCountDownTimer() {
-        object : CountDownTimer(16000, 100) {
-            override fun onTick(millisUntilFinished: Long) {
-                val time =  millisUntilFinished / 1000
-                view.showCountDown("残り" + time + "秒")
-            }
+    override fun didCreateView() {
+        startCountDownTimer()
+        koalaMusic.start()
+        showNextInstruction()
+    }
 
-            override fun onFinish() {
-                totalScore = okCount - ngCount
-                if ( totalScore < 0 ) {
-                    totalScore = 0
-                }
-                Log.i("${totalScore}", "スコア")
-                view.transitToTotalScorePage(totalScore)
-            }
-        }.start()
+    override fun didTapBackButton() {
+        koalaMusic.stop()
+        timer?.cancel()
+        view.transitToTopPage()
     }
 
     override fun didTapUp() {
@@ -88,8 +91,30 @@ class PlayGamePresenter (
         showNextInstruction()
     }
 
-    override fun showNextInstruction() {
-        val nextInstruction = Direction.values().random()
+    //private functions
+
+    private fun startCountDownTimer() {
+        //timer15秒設定だと画面遷移した時に14秒始まりになってしまうため16秒に設定する。
+        timer = object : CountDownTimer(16000, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                val time =  millisUntilFinished / 1000
+                view.showCountDown("残り" + time + "秒")
+            }
+
+            override fun onFinish() {
+                totalScore = okCount - ngCount
+                if ( totalScore < 0 ) {
+                    totalScore = 0
+                }
+                Log.i("${totalScore}", "スコア")
+                koalaMusic.stop()
+                view.transitToTotalScorePage(totalScore)
+            }
+        }.start()
+    }
+
+    private fun showNextInstruction() {
+        val nextInstruction: Direction = Direction.values().random()
         instructionDirection = nextInstruction
 
         val instructionText = when (nextInstruction) {
