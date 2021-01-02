@@ -29,6 +29,9 @@ class PlayGamePresenter (
     var ngCount: Int = 0
     var totalScore: Int = 0
 
+    //CountDownTimerの値
+    private var timer: CountDownTimer? = null
+
     //PlayGameContract.Presenter
 
     override fun didCreateView() {
@@ -82,10 +85,19 @@ class PlayGamePresenter (
         showNextInstruction()
     }
 
+    override fun stopMediaPlayer() {
+        koalaMusic.stop()
+    }
+
+    override fun resetCountDownTimer() {
+        timer?.cancel()
+    }
+
     //private functions
 
     private fun startCountDownTimer() {
-        object : CountDownTimer(16000, 100) {
+        //timer15秒設定だと画面遷移した時に14秒始まりになってしまうため16秒に設定する。
+        timer = object : CountDownTimer(16000, 100) {
             override fun onTick(millisUntilFinished: Long) {
                 val time =  millisUntilFinished / 1000
                 view.showCountDown("残り" + time + "秒")
@@ -97,7 +109,7 @@ class PlayGamePresenter (
                     totalScore = 0
                 }
                 Log.i("${totalScore}", "スコア")
-                koalaMusic.stop()
+                stopMediaPlayer()
                 view.transitToTotalScorePage(totalScore)
             }
         }.start()
@@ -108,7 +120,7 @@ class PlayGamePresenter (
     }
 
     private fun showNextInstruction() {
-        val nextInstruction = Direction.values().random()
+        val nextInstruction: Direction = Direction.values().random()
         instructionDirection = nextInstruction
 
         val instructionText = when (nextInstruction) {

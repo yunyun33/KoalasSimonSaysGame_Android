@@ -11,10 +11,13 @@ interface PlayGameContract {
         fun transitToTotalScorePage(totalScore: Int)
         fun showInstructionText(text: String)
 
+        fun transitToTopPage()
     }
 
     interface  Presenter {
         fun didCreateView()
+        fun stopMediaPlayer()
+        fun resetCountDownTimer()
 
         fun didTapUp()
         fun didTapDown()

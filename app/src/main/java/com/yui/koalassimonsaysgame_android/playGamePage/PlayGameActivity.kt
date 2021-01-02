@@ -1,12 +1,13 @@
 package com.yui.koalassimonsaysgame_android.playGamePage
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
@@ -43,6 +44,17 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         }
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // 端末の戻るボタンでMainActivityへ戻る。
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            presenter.stopMediaPlayer()
+            presenter.resetCountDownTimer()
+            transitToTopPage()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
     //PlayGameContract.View
 
     override fun showCountDown(text: String) {
@@ -73,5 +85,10 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
     override fun showInstructionText(text: String) {
         findViewById<TextView>(R.id.instructionText).text = text
+    }
+
+    override fun transitToTopPage() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
