@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yui.koalassimonsaysgame_android.R
 
-class RecyclerListAdapter(private val rankingData: MutableList<String>): RecyclerView.Adapter<RecyclerListViewHolder>() {
+class RecyclerListAdapter(private val rankingData: MutableList<RankingActivity.RowData>): RecyclerView.Adapter<RecyclerListViewHolder>() {
 
     //ViewHolderクラスを使ってViewHolderを作成
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerListViewHolder {
@@ -19,8 +19,11 @@ class RecyclerListAdapter(private val rankingData: MutableList<String>): Recycle
         return rankingData.size
     }
 
-    // ViewHolderに表示する画像とテキストを挿入
+    // 一行のViewに対して共通でやりたい処理をここで書く。
     override fun onBindViewHolder(holder: RecyclerListViewHolder, position: Int) {
+        val rowData = rankingData[position]
+        holder.name.text = rowData.name
+        holder.score.text = rowData.score
     }
 
 }
