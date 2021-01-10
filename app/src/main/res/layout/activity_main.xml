@@ -13,46 +13,85 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@id/startButtonBox"
+        app:layout_constraintBottom_toTopOf="@id/topPageButtonBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/title" />
 
-    <RelativeLayout
-        android:id="@+id/startButtonBox"
+    <LinearLayout
+        android:id="@+id/topPageButtonBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="11dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        <ImageButton
-            android:id="@+id/startButton"
+        <RelativeLayout
+            android:id="@+id/startButtonBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/menu_icon" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@id/rankingButtonBox">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/startButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/menu_icon" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:text="@string/startButton_text"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rankingButtonBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center_horizontal"
-            android:text="@string/start_text"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/rankingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/menu_icon" />
+
+            <TextView
+                android:id="@+id/rankingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:text="@string/rankingButton_text"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
