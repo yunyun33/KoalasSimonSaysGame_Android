@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/transitToRegistrationDialogButton"
+        android:id="@+id/displayTheRegistrationDialogButton"
         android:layout_width="65dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
