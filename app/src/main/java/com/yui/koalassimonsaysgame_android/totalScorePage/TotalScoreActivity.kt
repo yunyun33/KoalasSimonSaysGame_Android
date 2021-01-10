@@ -1,10 +1,14 @@
 package com.yui.koalassimonsaysgame_android.totalScorePage
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 
@@ -26,6 +30,27 @@ class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
     private fun setOnClickListener() {
         findViewById<Button>(R.id.transitToTopPageButton).setOnClickListener() {
             presenter.didTapTransitToTopPage()
+        }
+
+        findViewById<Button>(R.id.displayTheRegistrationDialogButton).setOnClickListener() {
+            val nameText = EditText(this)
+            nameText.setHint("What's your name?")
+
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("ランキングに登録しますか？")
+            dialog.setView(nameText)
+
+            dialog.setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+                // OKボタン押したときの処理
+                val userText = nameText.getText().toString()
+                Toast.makeText(this, "$userText と入力しました", Toast.LENGTH_SHORT).show()
+                presenter.didTapTransitToTopPage()
+            })
+
+            dialog.setNegativeButton("登録しない", DialogInterface.OnClickListener { dialog, which ->
+                presenter.didTapTransitToTopPage()
+            })
+            dialog.show()
         }
     }
 
