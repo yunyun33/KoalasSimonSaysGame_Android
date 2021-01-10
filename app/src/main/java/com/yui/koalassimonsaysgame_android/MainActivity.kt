@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         transitToPlayGamePage()
     }
 
+    //Android端末の戻るボタン無効化
+    override fun onBackPressed() {
+        //中身を空にすることで戻るボタンが無効化される。
+    }
+
     private fun transitToPlayGamePage() {
         val startButton = findViewById<ImageButton>(R.id.startButton)
         startButton.setOnClickListener() {
