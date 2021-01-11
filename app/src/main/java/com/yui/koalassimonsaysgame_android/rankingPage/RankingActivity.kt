@@ -32,10 +32,11 @@ class RankingActivity : AppCompatActivity() {
       //Rankingの処理
         val dataSet: MutableList<RowData> = ArrayList()
         var i = 1
-        while (i < page * 3) {
+        while (i < page * 4) {
             val data = RowData()
+            data.rank = "${i}位"
             data.name = "ミニしろ"
-            data.score = "9"
+            data.score = "9点"
             val add = dataSet.add(data)
             i += 1
         }
@@ -43,6 +44,7 @@ class RankingActivity : AppCompatActivity() {
     }
 
     inner class RowData {
+        var rank: String? = null
         var name: String? = null
         var score: String? = null
     }

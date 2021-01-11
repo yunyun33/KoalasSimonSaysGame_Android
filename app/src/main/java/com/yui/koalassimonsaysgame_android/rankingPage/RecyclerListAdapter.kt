@@ -22,6 +22,7 @@ class RecyclerListAdapter(private val rankingData: MutableList<RankingActivity.R
     // 一行のViewに対して共通でやりたい処理をここで書く。
     override fun onBindViewHolder(holder: RecyclerListViewHolder, position: Int) {
         val rowData = rankingData[position]
+        holder.rank.text = rowData.rank
         holder.name.text = rowData.name
         holder.score.text = rowData.score
     }
