@@ -1,9 +1,8 @@
-package com.yui.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.Model
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.lang.StringBuilder
 
 class DataBaseHelper(context: Context, databaseName:String, factory: SQLiteDatabase.CursorFactory?, version: Int)
     : SQLiteOpenHelper(context, databaseName, factory, version) {
@@ -15,6 +14,4 @@ class DataBaseHelper(context: Context, databaseName:String, factory: SQLiteDatab
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }
-
-
 }
