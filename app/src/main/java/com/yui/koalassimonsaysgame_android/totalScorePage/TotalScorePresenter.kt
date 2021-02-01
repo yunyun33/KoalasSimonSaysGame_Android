@@ -19,6 +19,9 @@ class TotalScorePresenter (
         view.showKoalaMessage(koalaMessage)
     }
 
+    override fun didTapPositiveButton() {
+    }
+
     override fun didTapTransitToTopPage() {
         view.transitToTopPage()
     }
