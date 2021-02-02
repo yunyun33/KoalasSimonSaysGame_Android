@@ -21,7 +21,9 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 
     var totalScore:Int = 10
 
-    var rankingDataList = mutableListOf<rankingData>()
+    var rankingDataList = mutableListOf<RankingData>()
+
+    lateinit var model: UserRankingModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,8 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         presenter = TotalScorePresenter(this, intent)
 
         presenter.didCreateView()
+
+        model = UserRankingModel()
     }
 
     private fun setOnClickListener() {
@@ -52,9 +56,9 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
                 val userText = nameText.getText().toString()
 
                 //rankingに登録
-                UserRankingModel().insertData(userText, totalScore.toString())
+                model.insertData(userText, totalScore.toString())
 
-                UserRankingModel().selectData()
+                model.selectData()
 
                 //確認用に表示
                 Toast.makeText(applicationContext, "${rankingDataList}", Toast.LENGTH_SHORT).show()
@@ -62,7 +66,7 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 //                val registerRanking = rankingData(0, userText, 10)
 //                rankingDataList.add(registerRanking)
                 val intent = Intent(this, RankingActivity::class.java)
-                val data = rankingData(userText, totalScore.toString())
+                val data = RankingData(userText, totalScore.toString())
                 intent.putExtra("RANKING_DATA", data)
 
                 presenter.didTapTransitToTopPage()
@@ -95,7 +99,7 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
         startActivity(intent)
     }
 
-    data class rankingData (
+    data class RankingData (
         val rankingName: String,
         val rankingScore: String
     ): Serializable
