@@ -11,7 +11,7 @@
         android:theme="@style/Theme.KoalasSimonSaysGame_android"
         android:name=".ApplicationController">
         <activity android:name=".rankingPage.RankingActivity"></activity>
-        <activity android:name=".totalScorePage.TotalScoreActivity" />
+        <activity android:name=".resultPage.ResultActivity" />
         <activity android:name=".playGamePage.PlayGameActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

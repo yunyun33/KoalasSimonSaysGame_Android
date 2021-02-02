@@ -1,4 +1,4 @@
-package com.yui.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.resultPage
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -14,9 +14,9 @@ import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.R
 import java.io.Serializable
 
-open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
+open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
-    private lateinit var presenter: TotalScoreContract.Presenter
+    private lateinit var presenter: ResultContract.Presenter
 
     var totalScore:Int = 10
 
@@ -28,7 +28,7 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 
         setOnClickListener()
 
-        presenter = TotalScorePresenter(this, intent)
+        presenter = ResultPresenter(this, intent)
 
         presenter.didCreateView()
 

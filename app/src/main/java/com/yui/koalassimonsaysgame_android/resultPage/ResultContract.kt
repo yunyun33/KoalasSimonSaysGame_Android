@@ -1,8 +1,6 @@
-package com.yui.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.resultPage
 
-import android.widget.EditText
-
-interface TotalScoreContract {
+interface ResultContract {
     interface View {
         fun showTotalScore(scoreText: String)
         fun showKoalaMessage(messageText: String)

@@ -1,11 +1,11 @@
-package com.yui.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.resultPage
 
 import android.content.Intent
 
-class TotalScorePresenter (
-        private val view: TotalScoreContract.View,
-        intent: Intent
-): TotalScoreContract.Presenter {
+class ResultPresenter (
+    private val view: ResultContract.View,
+    intent: Intent
+): ResultContract.Presenter {
 
     // 前の画面から渡されたtotalScoreを取得する。
     private val totalScore: Int = intent.getIntExtra("totalScore", 0)
