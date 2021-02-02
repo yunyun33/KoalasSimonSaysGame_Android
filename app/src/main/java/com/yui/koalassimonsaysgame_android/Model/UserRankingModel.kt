@@ -35,7 +35,9 @@ class UserRankingModel: ResultActivity() {
         }
     }
 
-    fun selectData() {
+    fun selectData() : MutableList<RankingData> {
+        val rankingDataList = mutableListOf<RankingData>()
+
         try {
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
@@ -44,6 +46,7 @@ class UserRankingModel: ResultActivity() {
 
             val cursor = database.rawQuery(sql, null)
             Log.i("selectData","cursor.count" + cursor.count)
+
             if (cursor.count > 0) {
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
@@ -51,17 +54,20 @@ class UserRankingModel: ResultActivity() {
                     val score = cursor.getString(1)
 
                     val localRankingData = RankingData(userName, score)
-                    
-                    TotalScoreActivity().rankingDataList.add(localRankingData)
+
+                    rankingDataList.add(localRankingData)
 
                     cursor.moveToNext()
-                    Log.i("中身","${TotalScoreActivity().rankingDataList}")
+
                 }
             }
 
         } catch (exception: Exception) {
             Log.e("selectData", exception.toString())
         }
+
+        Log.i("中身","${rankingDataList}")
+        return rankingDataList
 //        adapter.notifyDataSetChanged()
     }
 }
