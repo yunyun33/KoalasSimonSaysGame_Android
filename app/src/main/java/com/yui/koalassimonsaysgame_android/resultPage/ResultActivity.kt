@@ -12,7 +12,6 @@ import android.widget.Toast
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.R
-import com.yui.koalassimonsaysgame_android.rankingPage.RankingActivity
 import java.io.Serializable
 
 open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
@@ -21,9 +20,7 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 
     var totalScore:Int = 10
 
-    var rankingDataList = mutableListOf<RankingData>()
-
-    lateinit var model: UserRankingModel
+    lateinit var userRankingModel: UserRankingModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +32,7 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
 
         presenter.didCreateView()
 
-        model = UserRankingModel()
+        userRankingModel = UserRankingModel()
     }
 
     private fun setOnClickListener() {
@@ -56,18 +53,19 @@ open class TotalScoreActivity : AppCompatActivity(), TotalScoreContract.View {
                 val userText = nameText.getText().toString()
 
                 //rankingに登録
-                model.insertData(userText, totalScore.toString())
+                userRankingModel.insertData(userText, totalScore.toString())
 
-                model.selectData()
+
+                userRankingModel.selectData()
 
                 //確認用に表示
-                Toast.makeText(applicationContext, "${rankingDataList}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "${userRankingModel.selectData()}", Toast.LENGTH_SHORT).show()
 
 //                val registerRanking = rankingData(0, userText, 10)
 //                rankingDataList.add(registerRanking)
-                val intent = Intent(this, RankingActivity::class.java)
-                val data = RankingData(userText, totalScore.toString())
-                intent.putExtra("RANKING_DATA", data)
+//                val intent = Intent(this, RankingActivity::class.java)
+//                val data = RankingData(userText, totalScore.toString())
+//                intent.putExtra("RANKING_DATA", data)
 
                 presenter.didTapTransitToTopPage()
             })
