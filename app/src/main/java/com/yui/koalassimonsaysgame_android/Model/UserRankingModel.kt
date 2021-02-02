@@ -50,10 +50,12 @@ class UserRankingModel: TotalScoreActivity() {
                     val userName = cursor.getString(0)
                     val score = cursor.getString(1)
 
-                    val localRankingData = TotalScoreActivity.rankingData(userName, score)
+                    val localRankingData = RankingData(userName, score)
+                    
                     TotalScoreActivity().rankingDataList.add(localRankingData)
 
                     cursor.moveToNext()
+                    Log.i("中身","${TotalScoreActivity().rankingDataList}")
                 }
             }
 
