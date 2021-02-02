@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yui.koalassimonsaysgame_android.R
-import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
+import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
-class RecyclerListAdapter(private val rankingDataList: MutableList<TotalScoreActivity.RankingData>): RecyclerView.Adapter<RecyclerListViewHolder>() {
+class RecyclerListAdapter(private val rankingDataList: MutableList<ResultActivity.RankingData>): RecyclerView.Adapter<RecyclerListViewHolder>() {
 
     //ViewHolderクラスを使ってViewHolderを作成
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerListViewHolder {

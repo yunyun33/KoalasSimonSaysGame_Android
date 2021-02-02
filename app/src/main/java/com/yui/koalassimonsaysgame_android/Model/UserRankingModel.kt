@@ -4,9 +4,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import com.yui.koalassimonsaysgame_android.ApplicationController
-import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
+import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
-class UserRankingModel: TotalScoreActivity() {
+class UserRankingModel: ResultActivity() {
 
     var context: Context = ApplicationController.applicationContext()
 

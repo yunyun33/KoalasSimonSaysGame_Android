@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yui.koalassimonsaysgame_android.R
-import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
+import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 class RankingActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class RankingActivity : AppCompatActivity() {
         val RANKING_DATA = "ranking_data"
     }
 
-    private var rankingDataList = mutableListOf<TotalScoreActivity.RankingData>()
+    private var rankingDataList = mutableListOf<ResultActivity.RankingData>()
     private var page = 1
     private var recyclerListAdapter: RecyclerListAdapter? = null
 
@@ -22,7 +22,7 @@ class RankingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ranking)
 
         //TotalScoreActivityからランキングに登録する値(名前とスコア)を引き受ける
-        val data: TotalScoreActivity.RankingData = intent.getSerializableExtra(RANKING_DATA) as TotalScoreActivity.RankingData
+        val data: ResultActivity.RankingData = intent.getSerializableExtra(RANKING_DATA) as ResultActivity.RankingData
         rankingDataList.add(data)
 
 
@@ -39,9 +39,9 @@ class RankingActivity : AppCompatActivity() {
         recyclerView.adapter = recyclerListAdapter
     }
 
-    private fun createRowData(page: Int): MutableList<TotalScoreActivity.RankingData> {
+    private fun createRowData(page: Int): MutableList<ResultActivity.RankingData> {
       //Rankingの処理
-        val dataSet: MutableList<TotalScoreActivity.RankingData> = ArrayList()
+        val dataSet: MutableList<ResultActivity.RankingData> = ArrayList()
         var rowCount = 1
         while (rowCount < page * 4) {
             val data = RowData()
