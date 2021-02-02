@@ -34,7 +34,6 @@ class RankingActivity : AppCompatActivity() {
         var i = 1
         while (i < page * 4) {
             val data = RowData()
-            data.rank = "${i}位"
             data.name = "ミニしろ"
             data.score = "9点"
             val add = dataSet.add(data)
@@ -44,7 +43,6 @@ class RankingActivity : AppCompatActivity() {
     }
 
     inner class RowData {
-        var rank: String? = null
         var name: String? = null
         var score: String? = null
     }
