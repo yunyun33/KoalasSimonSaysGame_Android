@@ -1,10 +1,14 @@
 package com.yui.koalassimonsaysgame_android.Model
 
 import android.content.ContentValues
+import android.content.Context
 import android.util.Log
+import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
 class UserRankingModel: TotalScoreActivity() {
+
+    var context: Context = ApplicationController.applicationContext()
 
     val dbName: String = "ranking.db"
     val tableName: String = "LocalRankingTable"
@@ -13,7 +17,7 @@ class UserRankingModel: TotalScoreActivity() {
     fun insertData(userName: String, score: String) {
         try {
             //SQLiteOpenHelperを継承したクラスを呼び出す。
-            val dbHelper = DataBaseHelper(applicationContext, dbName, null, dbVersion)
+            val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
             //writableDatabaseメソッドを実行し、書き込み可能なSQLiteDatabaseを取得する。
             val database = dbHelper.writableDatabase
 
@@ -33,7 +37,7 @@ class UserRankingModel: TotalScoreActivity() {
 
     fun selectData() {
         try {
-            val dbHelper = DataBaseHelper(applicationContext, dbName, null, dbVersion)
+            val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
             val sql = "select userName, score from LocalRankingTable"
