@@ -5,15 +5,26 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yui.koalassimonsaysgame_android.R
+import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
 
 class RankingActivity : AppCompatActivity() {
 
+    companion object {
+        val RANKING_DATA = "ranking_data"
+    }
+
+    private var rankingDataList = mutableListOf<TotalScoreActivity.RankingData>()
     private var page = 1
     private var recyclerListAdapter: RecyclerListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
+
+        //TotalScoreActivityからランキングに登録する値(名前とスコア)を引き受ける
+        val data: TotalScoreActivity.RankingData = intent.getSerializableExtra(RANKING_DATA) as TotalScoreActivity.RankingData
+        rankingDataList.add(data)
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
@@ -28,16 +39,15 @@ class RankingActivity : AppCompatActivity() {
         recyclerView.adapter = recyclerListAdapter
     }
 
-    private fun createRowData(page: Int): MutableList<RowData> {
+    private fun createRowData(page: Int): MutableList<TotalScoreActivity.RankingData> {
       //Rankingの処理
-        val dataSet: MutableList<RowData> = ArrayList()
-        var i = 1
-        while (i < page * 4) {
+        val dataSet: MutableList<TotalScoreActivity.RankingData> = ArrayList()
+        var rowCount = 1
+        while (rowCount < page * 4) {
             val data = RowData()
-            data.name = "ミニしろ"
+            data.name = "${dataSet}"
             data.score = "9点"
-            val add = dataSet.add(data)
-            i += 1
+            rowCount += 1
         }
         return dataSet
     }
