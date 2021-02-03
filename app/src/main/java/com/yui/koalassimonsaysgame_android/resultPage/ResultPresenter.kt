@@ -1,11 +1,14 @@
 package com.yui.koalassimonsaysgame_android.resultPage
 
 import android.content.Intent
+import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 
 class ResultPresenter (
     private val view: ResultContract.View,
     intent: Intent
 ): ResultContract.Presenter {
+
+    private val userRankingModel = UserRankingModel()
 
     // 前の画面から渡されたtotalScoreを取得する。
     private val totalScore: Int = intent.getIntExtra("totalScore", 0)
@@ -19,7 +22,9 @@ class ResultPresenter (
         view.showKoalaMessage(koalaMessage)
     }
 
-    override fun didTapPositiveButton() {
+    override fun didTapResultButton(userText: String) {
+        //rankingに登録
+        userRankingModel.insertData(userText, totalScore.toString())
     }
 
     override fun didTapTransitToTopPage() {

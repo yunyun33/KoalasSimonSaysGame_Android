@@ -18,8 +18,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     private lateinit var presenter: ResultContract.Presenter
 
-    var totalScore:Int = 10
-
     lateinit var userRankingModel: UserRankingModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +47,10 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
             dialog.setView(nameText)
 
             dialog.setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
-                // OKボタン押したときの処理
+                // OKボタン押したときの処理(rankingに登録する)
                 val userText = nameText.getText().toString()
 
-                //rankingに登録
-                userRankingModel.insertData(userText, totalScore.toString())
+                presenter.didTapResultButton(userText)
 
 
                 userRankingModel.selectData()

@@ -10,7 +10,7 @@ interface ResultContract {
 
     interface Presenter {
         fun didCreateView()
-        fun didTapPositiveButton()
+        fun didTapResultButton(userText: String)
         fun didTapTransitToTopPage()
     }
 }
