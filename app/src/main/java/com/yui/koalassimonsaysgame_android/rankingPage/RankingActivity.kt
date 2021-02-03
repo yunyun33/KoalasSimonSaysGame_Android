@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yui.koalassimonsaysgame_android.R
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
-class RankingActivity : AppCompatActivity() {
+class RankingActivity : AppCompatActivity(), RankingContract.View {
+
+    private lateinit var presenter: RankingContract.Presenter
 
     companion object {
         val RANKING_DATA = "ranking_data"
@@ -37,6 +39,8 @@ class RankingActivity : AppCompatActivity() {
         //Adapter生成してRecyclerViewにセットする。
         recyclerListAdapter = RecyclerListAdapter(createRowData(page))
         recyclerView.adapter = recyclerListAdapter
+
+
     }
 
     private fun createRowData(page: Int): MutableList<ResultActivity.RankingData> {
