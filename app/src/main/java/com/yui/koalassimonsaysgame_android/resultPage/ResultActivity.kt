@@ -58,12 +58,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
                 //確認用に表示
                 Toast.makeText(applicationContext, "${userRankingModel.selectData()}", Toast.LENGTH_SHORT).show()
 
-//                val registerRanking = rankingData(0, userText, 10)
-//                rankingDataList.add(registerRanking)
-//                val intent = Intent(this, RankingActivity::class.java)
-//                val data = RankingData(userText, totalScore.toString())
-//                intent.putExtra("RANKING_DATA", data)
-
                 presenter.didTapTransitToTopPage()
             })
 
