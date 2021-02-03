@@ -51,7 +51,7 @@ class UserRankingModel: ResultActivity() {
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
                     val userName = cursor.getString(0)
-                    val score = cursor.getString(1)
+                    val score = cursor.getInt(1)
 
                     val localRankingData = RankingData(userName, score)
 

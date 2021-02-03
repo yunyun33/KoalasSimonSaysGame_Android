@@ -9,7 +9,7 @@ class DataBaseHelper(context: Context, databaseName:String, factory: SQLiteDatab
 
     override fun onCreate(database: SQLiteDatabase?) {
         //テーブル作成
-        database?.execSQL("create table if not exists LocalRankingTable (userName text, score text)")
+        database?.execSQL("create table if not exists LocalRankingTable (userName text, score integer)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

@@ -99,7 +99,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     data class RankingData (
         val rankingName: String,
-        val rankingScore: String
+        val rankingScore: Int
     ): Serializable
-
 }
