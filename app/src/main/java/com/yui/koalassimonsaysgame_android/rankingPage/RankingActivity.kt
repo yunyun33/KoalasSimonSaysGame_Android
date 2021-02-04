@@ -22,17 +22,13 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
         //DBからデータ取得する。
         presenter.didGetRankingData()
-
-
-
+        
         recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
         //RecyclerViewにlayoutManagerをセットする。
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        //val rankingDataList = mutableListOf<RankingData>()
-
-        val rankingDataList = presenter.didGetRankingData()
+        val rankingDataList = mutableListOf<ResultActivity.RankingData>()
 
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
         recyclerView.setHasFixedSize(true)
