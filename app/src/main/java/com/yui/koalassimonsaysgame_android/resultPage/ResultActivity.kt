@@ -8,17 +8,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.yui.koalassimonsaysgame_android.MainActivity
-import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.R
 import java.io.Serializable
 
 open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     private lateinit var presenter: ResultContract.Presenter
-
-    lateinit var userRankingModel: UserRankingModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +25,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         presenter = ResultPresenter(this, intent)
 
         presenter.didCreateView()
-
-        userRankingModel = UserRankingModel()
     }
 
     private fun setOnClickListener() {
@@ -51,12 +45,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
                 val userText = nameText.getText().toString()
 
                 presenter.didTapResultButton(userText)
-
-
-                userRankingModel.selectData()
-
-                //確認用に表示
-                Toast.makeText(applicationContext, "${userRankingModel.selectData()}", Toast.LENGTH_SHORT).show()
 
                 presenter.didTapTransitToTopPage()
             })
