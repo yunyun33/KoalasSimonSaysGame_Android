@@ -6,6 +6,7 @@ interface RankingContract {
     }
 
     interface Presenter {
+        fun didGetRankingData()
 
     }
 }

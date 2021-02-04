@@ -11,53 +11,35 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
     private lateinit var presenter: RankingContract.Presenter
 
-    companion object {
-        val RANKING_DATA = "ranking_data"
-    }
-
-    private var rankingDataList = mutableListOf<ResultActivity.RankingData>()
-    private var page = 1
-    private var recyclerListAdapter: RecyclerListAdapter? = null
+    lateinit var recyclerView: RecyclerView
+    lateinit var adapter: RecyclerListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
-        //TotalScoreActivityからランキングに登録する値(名前とスコア)を引き受ける
-        val data: ResultActivity.RankingData = intent.getSerializableExtra(RANKING_DATA) as ResultActivity.RankingData
-        rankingDataList.add(data)
+        presenter = RankingPresenter(this)
+
+        //DBからデータ取得する。
+        presenter.didGetRankingData()
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
-        //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
-        recyclerView.setHasFixedSize(true)
 
+        recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
         //RecyclerViewにlayoutManagerをセットする。
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
+        //val rankingDataList = mutableListOf<RankingData>()
+
+        val rankingDataList = presenter.didGetRankingData()
+
+        //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
+        recyclerView.setHasFixedSize(true)
+
         //Adapter生成してRecyclerViewにセットする。
-        recyclerListAdapter = RecyclerListAdapter(createRowData(page))
-        recyclerView.adapter = recyclerListAdapter
+        adapter = RecyclerListAdapter(rankingDataList)
+        recyclerView.adapter = adapter
 
-
-    }
-
-    private fun createRowData(page: Int): MutableList<ResultActivity.RankingData> {
-      //Rankingの処理
-        val dataSet: MutableList<ResultActivity.RankingData> = ArrayList()
-        var rowCount = 1
-        while (rowCount < page * 4) {
-            val data = RowData()
-            data.name = "${dataSet}"
-            data.score = "9点"
-            rowCount += 1
-        }
-        return dataSet
-    }
-
-    inner class RowData {
-        var name: String? = null
-        var score: String? = null
     }
 }
