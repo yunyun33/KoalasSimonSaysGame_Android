@@ -20,22 +20,21 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
         presenter = RankingPresenter(this)
 
-        //DBからデータ取得する。
-        presenter.didGetRankingData()
-        
         recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
+
         //RecyclerViewにlayoutManagerをセットする。
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val rankingDataList = mutableListOf<ResultActivity.RankingData>()
-
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
         recyclerView.setHasFixedSize(true)
 
-        //Adapter生成してRecyclerViewにセットする。
-        adapter = RecyclerListAdapter(rankingDataList)
-        recyclerView.adapter = adapter
+        presenter.didCreate()
+    }
 
+    //Adapter生成してRecyclerViewにセットする。
+    override fun setRankingData(data: MutableList<ResultActivity.RankingData>) {
+        adapter = RecyclerListAdapter(data)
+        recyclerView.adapter = adapter
     }
 }
