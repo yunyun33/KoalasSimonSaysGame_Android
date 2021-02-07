@@ -19,9 +19,14 @@ class RecyclerListAdapter(private var rankingDataList: MutableList<ResultActivit
     // 一行のViewに対して共通でやりたい処理をここで書く。
     override fun onBindViewHolder(holder: RecyclerListViewHolder, position: Int) {
         val rowData = rankingDataList[position]
-        holder.rank.text = "1位"
-        holder.name.text = rowData.rankingName
-        holder.score.text = rowData.rankingScore.toString()
+
+        for (i in rankingDataList) {
+
+            holder.rank.text =  (position + 1).toString() + "位"
+            holder.name.text = rowData.rankingName
+            holder.score.text = rowData.rankingScore.toString()
+
+        }
     }
 
     //recyclerViewのコンテンツのサイズ
