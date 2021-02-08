@@ -75,3 +75,20 @@ class UserRankingModel: UserRankingModelContract {
 //        adapter.notifyDataSetChanged()
     }
 }
+
+class UserRankingModelMock: UserRankingModelContract {
+
+    override fun insertData(userName: String, score: String) {
+
+    }
+
+    override fun selectData() : MutableList<ResultActivity.RankingData> {
+        //サンプルの値を作ってリターンする。
+        var rankingData: MutableList<ResultActivity.RankingData> = mutableListOf()
+        rankingData.add(ResultActivity.RankingData("mini", 1))
+        rankingData.add(ResultActivity.RankingData("ちゅー", 3))
+        rankingData.add(ResultActivity.RankingData("でか", 5))
+
+        return rankingData
+    }
+}
