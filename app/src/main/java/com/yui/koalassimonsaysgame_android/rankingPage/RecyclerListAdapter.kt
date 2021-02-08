@@ -22,9 +22,9 @@ class RecyclerListAdapter(private var rankingDataList: MutableList<ResultActivit
 
         for (i in rankingDataList) {
 
-            holder.rank.text =  (position + 1).toString() + "位"
+            holder.rank.text =  (position + 1).toString() + " 位"
             holder.name.text = rowData.rankingName
-            holder.score.text = rowData.rankingScore.toString()
+            holder.score.text = rowData.rankingScore.toString() + " 点"
         }
     }
 
