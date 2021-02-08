@@ -47,6 +47,7 @@ class UserRankingModel: UserRankingModelContract {
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
+            //scoreの降順でデータを取得する。
             val sql = "select userName, score from LocalRankingTable order by score desc"
 
             val cursor = database.rawQuery(sql, null)
