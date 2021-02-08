@@ -47,7 +47,7 @@ class UserRankingModel: UserRankingModelContract {
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
-            val sql = "select userName, score from LocalRankingTable"
+            val sql = "select userName, score from LocalRankingTable order by score desc"
 
             val cursor = database.rawQuery(sql, null)
             Log.i("selectData","cursor.count" + cursor.count)
