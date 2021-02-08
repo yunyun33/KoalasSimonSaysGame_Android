@@ -25,7 +25,6 @@ class RecyclerListAdapter(private var rankingDataList: MutableList<ResultActivit
             holder.rank.text =  (position + 1).toString() + "位"
             holder.name.text = rowData.rankingName
             holder.score.text = rowData.rankingScore.toString()
-
         }
     }
 

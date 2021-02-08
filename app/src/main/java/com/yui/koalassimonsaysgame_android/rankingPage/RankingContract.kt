@@ -9,6 +9,5 @@ interface RankingContract {
 
     interface Presenter {
         fun didCreate()
-
     }
 }
