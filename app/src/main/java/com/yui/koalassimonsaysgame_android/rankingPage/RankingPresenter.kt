@@ -6,7 +6,7 @@ class RankingPresenter(
     private val view: RankingContract.View
 ): RankingContract.Presenter {
 
-    private val userRankingModel = UserRankingModel()
+    private val userRankingModel: UserRankingModelContract  = UserRankingModelMock()
 
     override fun didCreate() {
         val rankingData = userRankingModel.selectData()

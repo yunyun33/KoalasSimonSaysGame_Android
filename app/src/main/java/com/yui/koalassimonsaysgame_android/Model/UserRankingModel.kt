@@ -6,7 +6,12 @@ import android.util.Log
 import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
-class UserRankingModel: ResultActivity() {
+interface UserRankingModelContract {
+    fun insertData(userName: String, score: String)
+    fun selectData() : MutableList<ResultActivity.RankingData>
+}
+
+class UserRankingModel: UserRankingModelContract {
 
     var context: Context = ApplicationController.applicationContext()
 
@@ -14,7 +19,7 @@ class UserRankingModel: ResultActivity() {
     val tableName: String = "LocalRankingTable"
     val dbVersion: Int = 1
 
-    fun insertData(userName: String, score: String) {
+    override fun insertData(userName: String, score: String) {
         try {
             //SQLiteOpenHelperを継承したクラスを呼び出す。
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
@@ -35,8 +40,8 @@ class UserRankingModel: ResultActivity() {
         }
     }
 
-    fun selectData() : MutableList<RankingData> {
-        val rankingDataList = mutableListOf<RankingData>()
+    override fun selectData(): MutableList<ResultActivity.RankingData> {
+        val rankingDataList = mutableListOf<ResultActivity.RankingData>()
 
         try {
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
@@ -53,12 +58,11 @@ class UserRankingModel: ResultActivity() {
                     val userName = cursor.getString(0)
                     val score = cursor.getInt(1)
 
-                    val localRankingData = RankingData(userName, score)
+                    val localRankingData = ResultActivity.RankingData(userName, score)
 
                     rankingDataList.add(localRankingData)
 
                     cursor.moveToNext()
-
                 }
             }
 
