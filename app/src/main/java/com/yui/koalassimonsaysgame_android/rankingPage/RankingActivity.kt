@@ -21,6 +21,8 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
+        title = "ランキング"
+
         presenter = RankingPresenter(this)
 
         recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
