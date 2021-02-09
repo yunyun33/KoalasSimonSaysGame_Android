@@ -9,6 +9,7 @@ import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 interface UserRankingModelContract {
     fun insertData(userName: String, score: String)
     fun selectData() : MutableList<ResultActivity.RankingData>
+    fun deleteData()
 }
 
 class UserRankingModel: UserRankingModelContract {
@@ -75,6 +76,22 @@ class UserRankingModel: UserRankingModelContract {
         return rankingDataList
 //        adapter.notifyDataSetChanged()
     }
+
+    override fun deleteData() {
+        try {
+            val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
+            val database = dbHelper.writableDatabase
+
+            //全行を削除する場合はnullを指定する。
+            val whereClauses = null
+            //WHERE句に「?」が存在しない場合はnullを指定する。
+            val whereArgs = null
+
+            database.delete(tableName, whereClauses, whereArgs)
+        } catch (exception: Exception) {
+            Log.e("deleteData", exception.toString())
+        }
+    }
 }
 
 class UserRankingModelMock: UserRankingModelContract {
@@ -91,5 +108,9 @@ class UserRankingModelMock: UserRankingModelContract {
         rankingData.add(ResultActivity.RankingData("でか", 5))
 
         return rankingData
+    }
+
+    override fun deleteData() {
+
     }
 }
