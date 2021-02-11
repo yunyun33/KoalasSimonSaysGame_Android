@@ -25,8 +25,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view)
 
         //RecyclerViewにlayoutManagerをセットする。
-        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
         recyclerView.setHasFixedSize(true)
