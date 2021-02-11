@@ -31,11 +31,14 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         recyclerView.setHasFixedSize(true)
 
         presenter.didCreate()
+
+        setOnClickListener()
     }
 
-    override fun didTapDeleteButton() {
-        val deleteButton = findViewById<ImageButton>(R.id.deleteButton)
-        presenter.checkRankingData(deleteButton)
+    private fun setOnClickListener() {
+        findViewById<ImageButton>(R.id.deleteButton).setOnClickListener() {
+            presenter.checkRankingData(findViewById<ImageButton>(R.id.deleteButton))
+        }
     }
 
     //Adapter生成してRecyclerViewにセットする。
