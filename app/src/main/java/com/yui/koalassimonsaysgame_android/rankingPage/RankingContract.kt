@@ -10,7 +10,7 @@ interface RankingContract {
 
     interface Presenter {
         fun didCreate()
-        fun didTapPositiveButton()
+        fun didTapPositiveButtonOnDeletePopup()
         fun didTapDeleteButton()
     }
 }

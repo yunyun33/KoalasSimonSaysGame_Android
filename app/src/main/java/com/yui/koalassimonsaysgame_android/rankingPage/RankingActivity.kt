@@ -56,7 +56,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         dialog.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
 
             // OKボタン押したときの処理(ランキングデータを削除する)
-            presenter.didTapPositiveButton()
+            presenter.didTapPositiveButtonOnDeletePopup()
         })
 
         dialog.setNegativeButton("キャンセル", null)
