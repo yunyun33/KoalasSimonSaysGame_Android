@@ -62,4 +62,8 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         dialog.setNegativeButton("キャンセル", null)
         dialog.show()
     }
+
+    override fun disableDeleteButton() {
+
+    }
 }
