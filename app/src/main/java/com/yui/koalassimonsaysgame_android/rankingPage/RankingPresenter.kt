@@ -20,7 +20,7 @@ class RankingPresenter(
         view.setRankingData(userRankingModel.selectData())
     }
 
-    override fun checkRankingData(button: ImageButton) {
+    override fun didTapDeleteButton(button: ImageButton) {
         val rankingData = userRankingModel.selectData()
 
         if (rankingData.isEmpty()) {

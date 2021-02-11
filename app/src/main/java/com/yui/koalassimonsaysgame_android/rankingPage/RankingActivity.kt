@@ -37,7 +37,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
     private fun setOnClickListener() {
         findViewById<ImageButton>(R.id.deleteButton).setOnClickListener() {
-            presenter.checkRankingData(findViewById<ImageButton>(R.id.deleteButton))
+            presenter.didTapDeleteButton(findViewById<ImageButton>(R.id.deleteButton))
         }
     }
 
