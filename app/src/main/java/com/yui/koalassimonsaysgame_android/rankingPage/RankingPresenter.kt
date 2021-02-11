@@ -17,8 +17,7 @@ class RankingPresenter(
     var context: Context = ApplicationController.applicationContext()
 
     override fun didCreate() {
-        val rankingData = userRankingModel.selectData()
-        view.setRankingData(rankingData)
+        view.setRankingData(userRankingModel.selectData())
     }
 
     override fun checkRankingData(button: ImageButton) {
