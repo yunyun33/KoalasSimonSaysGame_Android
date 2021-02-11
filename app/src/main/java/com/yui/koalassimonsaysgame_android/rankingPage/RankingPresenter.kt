@@ -1,13 +1,9 @@
 package com.yui.koalassimonsaysgame_android.rankingPage
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
-import android.widget.ImageButton
 import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModelContract
-import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 class RankingPresenter(
     private val view: RankingContract.View
