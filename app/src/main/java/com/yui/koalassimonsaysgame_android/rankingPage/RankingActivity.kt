@@ -1,7 +1,5 @@
 package com.yui.koalassimonsaysgame_android.rankingPage
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -36,30 +34,12 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
         presenter.didCreate()
 
-
-
-        setOnClickListener()
     }
 
-    private fun setOnClickListener() {
+    override fun didTapDeleteButton() {
         val deleteButton = findViewById<ImageButton>(R.id.deleteButton)
-        deleteButton.setOnClickListener() {
 
-            presenter.disableDeleteButton(deleteButton)
-
-            val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("ランキングデータを\n削除します。")
-            dialog.setMessage("データは全て削除されます。")
-
-            dialog.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-
-                // OKボタン押したときの処理(ランキングデータを削除する)
-                presenter.didTapDeleteButton()
-            })
-
-            dialog.setNegativeButton("キャンセル", null)
-            dialog.show()
-        }
+        presenter.checkRankingData(deleteButton)
     }
 
     //Adapter生成してRecyclerViewにセットする。

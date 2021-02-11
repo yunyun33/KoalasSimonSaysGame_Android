@@ -6,11 +6,11 @@ import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 interface RankingContract {
     interface View {
         fun setRankingData(data: MutableList<ResultActivity.RankingData>)
+        fun didTapDeleteButton()
     }
 
     interface Presenter {
         fun didCreate()
-        fun didTapDeleteButton()
-        fun disableDeleteButton(button: ImageButton)
+        fun checkRankingData(button: ImageButton)
     }
 }
