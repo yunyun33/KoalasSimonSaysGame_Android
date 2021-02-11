@@ -1,7 +1,5 @@
 package com.yui.koalassimonsaysgame_android.rankingPage
 
-import android.content.Context
-import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModelContract
 
@@ -10,8 +8,6 @@ class RankingPresenter(
 ): RankingContract.Presenter {
 
     private val userRankingModel: UserRankingModelContract  = UserRankingModel()
-
-    var context: Context = ApplicationController.applicationContext()
 
     override fun didCreate() {
         view.setRankingData(userRankingModel.selectData())
