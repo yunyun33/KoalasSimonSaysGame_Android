@@ -10,7 +10,14 @@ class RankingPresenter(
     private val userRankingModel: UserRankingModelContract  = UserRankingModel()
 
     override fun didCreate() {
-        view.setRankingData(userRankingModel.selectData())
+        val rankigData = userRankingModel.selectData()
+        view.setRankingData(rankigData)
+
+        if (rankigData.isEmpty()) {
+            view.disableDeleteButton()
+        } else {
+            view.setRankingData(rankigData)
+        }
     }
 
     override fun didTapDeleteButton() {
