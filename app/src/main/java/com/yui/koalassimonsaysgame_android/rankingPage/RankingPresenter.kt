@@ -30,20 +30,10 @@ class RankingPresenter(
 //
 //        } else {
 //            button.setOnClickListener() {
+//        }
+    }
 
-                val dialog = AlertDialog.Builder(context)
-                dialog.setTitle("ランキングデータを\n削除します。")
-                dialog.setMessage("データは全て削除されます。")
-
-                dialog.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-
-                    // OKボタン押したときの処理(ランキングデータを削除する)
-                    userRankingModel.deleteData()
-                })
-
-                dialog.setNegativeButton("キャンセル", null)
-                dialog.show()
-//            }
-        }
+    override fun didTapPositiveButton() {
+        userRankingModel.deleteData()
     }
 }
