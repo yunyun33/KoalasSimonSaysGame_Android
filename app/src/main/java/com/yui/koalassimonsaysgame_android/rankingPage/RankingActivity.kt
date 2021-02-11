@@ -13,7 +13,6 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
     private lateinit var presenter: RankingContract.Presenter
 
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: RecyclerListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +32,15 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         recyclerView.setHasFixedSize(true)
 
         presenter.didCreate()
-
     }
 
     override fun didTapDeleteButton() {
         val deleteButton = findViewById<ImageButton>(R.id.deleteButton)
-
         presenter.checkRankingData(deleteButton)
     }
 
     //Adapter生成してRecyclerViewにセットする。
     override fun setRankingData(data: MutableList<ResultActivity.RankingData>) {
-        adapter = RecyclerListAdapter(data)
-        recyclerView.adapter = adapter
+        recyclerView.adapter = RecyclerListAdapter(data)
     }
 }
