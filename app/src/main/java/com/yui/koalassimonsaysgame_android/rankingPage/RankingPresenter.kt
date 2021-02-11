@@ -11,7 +11,6 @@ class RankingPresenter(
 
     override fun didCreate() {
         val rankigData = userRankingModel.selectData()
-        view.setRankingData(rankigData)
 
         if (rankigData.isEmpty()) {
             view.disableDeleteButton()
