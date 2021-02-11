@@ -25,7 +25,7 @@ class RankingPresenter(
 //        }
     }
 
-    override fun didTapPositiveButton() {
+    override fun didTapPositiveButtonOnDeletePopup() {
         userRankingModel.deleteData()
     }
 }
