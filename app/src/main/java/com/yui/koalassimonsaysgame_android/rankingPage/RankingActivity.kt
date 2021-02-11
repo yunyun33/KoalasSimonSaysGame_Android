@@ -65,6 +65,6 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
     override fun disableDeleteButton() {
         //ゴミ箱ボタンを無効にする。
-        findViewById<ImageButton>(R.id.deleteButton).isClickable = false
+        findViewById<ImageButton>(R.id.deleteButton).isEnabled = false
     }
 }
