@@ -10,6 +10,6 @@ interface RankingContract {
 
     interface Presenter {
         fun didCreate()
-        fun didTapDeleteButton(button: ImageButton)
+        fun didTapDeleteButton()
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModelContract
+import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 class RankingPresenter(
     private val view: RankingContract.View
@@ -20,15 +21,15 @@ class RankingPresenter(
         view.setRankingData(userRankingModel.selectData())
     }
 
-    override fun didTapDeleteButton(button: ImageButton) {
-        val rankingData = userRankingModel.selectData()
+    override fun didTapDeleteButton() {
+//        val rankingData = userRankingModel.selectData()
 
-        if (rankingData.isEmpty()) {
-            // ランキングデータがなかったら、ボタンを無効にする。
-            button.isClickable = false
-
-        } else {
-            button.setOnClickListener() {
+//        if (rankingData == mutableListOf<ResultActivity.RankingData>()) {
+//            // ランキングデータがなかったら、ボタンを無効にする。
+//            button.isClickable = false
+//
+//        } else {
+//            button.setOnClickListener() {
 
                 val dialog = AlertDialog.Builder(context)
                 dialog.setTitle("ランキングデータを\n削除します。")
@@ -42,7 +43,7 @@ class RankingPresenter(
 
                 dialog.setNegativeButton("キャンセル", null)
                 dialog.show()
-            }
+//            }
         }
     }
 }
