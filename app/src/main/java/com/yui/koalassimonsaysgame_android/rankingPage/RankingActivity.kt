@@ -64,6 +64,6 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
     }
 
     override fun disableDeleteButton() {
-
+        findViewById<ImageButton>(R.id.deleteButton).isClickable = false
     }
 }
