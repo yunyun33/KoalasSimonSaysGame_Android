@@ -14,15 +14,7 @@ class RankingPresenter(
     }
 
     override fun didTapDeleteButton() {
-//        val rankingData = userRankingModel.selectData()
-
-//        if (rankingData == mutableListOf<ResultActivity.RankingData>()) {
-//            // ランキングデータがなかったら、ボタンを無効にする。
-//            button.isClickable = false
-//
-//        } else {
-//            button.setOnClickListener() {
-//        }
+        view.showAlertDialog()
     }
 
     override fun didTapPositiveButtonOnDeletePopup() {
