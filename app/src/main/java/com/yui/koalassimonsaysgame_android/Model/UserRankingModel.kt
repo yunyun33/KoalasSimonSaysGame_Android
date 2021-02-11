@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import com.yui.koalassimonsaysgame_android.ApplicationController
+import com.yui.koalassimonsaysgame_android.rankingPage.RecyclerListAdapter
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 interface UserRankingModelContract {

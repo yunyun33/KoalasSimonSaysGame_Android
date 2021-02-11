@@ -36,11 +36,16 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
         presenter.didCreate()
 
+
+
         setOnClickListener()
     }
 
     private fun setOnClickListener() {
-        findViewById<ImageButton>(R.id.deleteButton).setOnClickListener() {
+        val deleteButton = findViewById<ImageButton>(R.id.deleteButton)
+        deleteButton.setOnClickListener() {
+
+            presenter.disableDeleteButton(deleteButton)
 
             val dialog = AlertDialog.Builder(this)
             dialog.setTitle("ランキングデータを\n削除します。")
@@ -50,7 +55,6 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
                 // OKボタン押したときの処理(ランキングデータを削除する)
                 presenter.didTapDeleteButton()
-                adapter.notifyDataSetChanged()
             })
 
             dialog.setNegativeButton("キャンセル", null)
