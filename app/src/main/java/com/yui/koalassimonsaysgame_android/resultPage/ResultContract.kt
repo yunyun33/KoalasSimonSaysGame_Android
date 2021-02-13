@@ -6,7 +6,7 @@ interface ResultContract {
     interface View {
         fun showTotalScore(scoreText: String)
         fun showKoalaMessage(messageText: String)
-        fun showErrorMessage()
+        fun showEmptyErrorMessage()
 
         fun transitToTopPage()
     }

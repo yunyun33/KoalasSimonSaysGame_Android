@@ -75,7 +75,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         startActivity(intent)
     }
 
-    override fun showErrorMessage() {
+    override fun showEmptyErrorMessage() {
         Toast.makeText(applicationContext, "名前を入力していないため、\n登録できませんでした。", Toast.LENGTH_LONG).show()
     }
 
