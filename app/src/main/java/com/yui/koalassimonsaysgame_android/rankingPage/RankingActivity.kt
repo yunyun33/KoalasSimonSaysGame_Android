@@ -60,8 +60,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
             //deleteButton押されたらリストに表示されているデータをすぐに消す(表示を空にする)。
             val data: MutableList<ResultActivity.RankingData> = mutableListOf()
-            recyclerView.adapter = RecyclerListAdapter(data)
-            (recyclerView.adapter as RecyclerListAdapter).notifyDataSetChanged()
+            setRankingData(data)
         })
 
         dialog.setNegativeButton("キャンセル", null)
@@ -71,5 +70,10 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
     override fun disableDeleteButton() {
         //ゴミ箱ボタンを無効にする。
         findViewById<ImageButton>(R.id.deleteButton).isEnabled = false
+    }
+
+    override fun resetRankingData(data: MutableList<ResultActivity.RankingData>) {
+        recyclerView.adapter = RecyclerListAdapter(data)
+        (recyclerView.adapter as RecyclerListAdapter).notifyDataSetChanged()
     }
 }

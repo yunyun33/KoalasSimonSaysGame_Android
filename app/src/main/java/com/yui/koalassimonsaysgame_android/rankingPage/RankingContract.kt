@@ -7,6 +7,7 @@ interface RankingContract {
         fun setRankingData(data: MutableList<ResultActivity.RankingData>)
         fun showAlertDialog()
         fun disableDeleteButton()
+        fun resetRankingData(data: MutableList<ResultActivity.RankingData>)
     }
 
     interface Presenter {
