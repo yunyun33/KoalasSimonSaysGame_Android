@@ -57,10 +57,6 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
             // OKボタン押したときの処理(ランキングデータを削除する)
             presenter.didTapPositiveButtonOnDeletePopup()
-
-            //deleteButton押されたらリストに表示されているデータをすぐに消す(表示を空にする)。
-            val data: MutableList<ResultActivity.RankingData> = mutableListOf()
-            setRankingData(data)
         })
 
         dialog.setNegativeButton("キャンセル", null)
