@@ -42,7 +42,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
             dialog.setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
                 // OKボタン押したときの処理(rankingに登録する)
-                val userText = nameText.getText().toString()
+                val userText = nameText.getText().toString().trim()
 
                 presenter.didTapResultButton(userText)
 
