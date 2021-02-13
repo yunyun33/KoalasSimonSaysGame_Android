@@ -1,6 +1,9 @@
 package com.yui.koalassimonsaysgame_android.resultPage
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 
 class ResultPresenter (
@@ -9,6 +12,8 @@ class ResultPresenter (
 ): ResultContract.Presenter {
 
     private val userRankingModel = UserRankingModel()
+
+    var context: Context = ApplicationController.applicationContext()
 
     // 前の画面から渡されたtotalScoreを取得する。
     private val totalScore: Int = intent.getIntExtra("totalScore", 0)
@@ -23,8 +28,17 @@ class ResultPresenter (
     }
 
     override fun didTapResultButton(userText: String) {
-        //rankingに登録
-        userRankingModel.insertData(userText, totalScore.toString())
+
+        val dialog = AlertDialog.Builder(context)
+
+        //EditTextが空ならイベント何もなくダイアログを閉じる。
+        if (userText.equals("")) {
+            view.closeDialog(dialog)
+        } else {
+            //rankingに登録
+            userRankingModel.insertData(userText, totalScore.toString())
+            didTapTransitToTopPage()
+        }
     }
 
     override fun didTapTransitToTopPage() {

@@ -45,8 +45,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
                 val userText = nameText.getText().toString().trim()
 
                 presenter.didTapResultButton(userText)
-
-                presenter.didTapTransitToTopPage()
             })
 
             dialog.setNegativeButton("登録しない", DialogInterface.OnClickListener { dialog, which ->
@@ -69,6 +67,10 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     override fun showKoalaMessage(messageText: String) {
         findViewById<TextView>(R.id.koalaMessageText).text = messageText
+    }
+
+    override fun closeDialog(dialog: AlertDialog.Builder) {
+        setOf(dialog)
     }
 
     override fun transitToTopPage() {
