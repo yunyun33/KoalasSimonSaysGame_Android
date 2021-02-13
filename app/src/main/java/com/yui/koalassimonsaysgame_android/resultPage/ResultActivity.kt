@@ -70,10 +70,6 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         findViewById<TextView>(R.id.koalaMessageText).text = messageText
     }
 
-    override fun closeDialog(dialog: AlertDialog.Builder) {
-        setOf(dialog)
-    }
-
     override fun transitToTopPage() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

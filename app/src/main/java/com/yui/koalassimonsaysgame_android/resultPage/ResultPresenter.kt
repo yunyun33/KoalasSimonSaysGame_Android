@@ -29,11 +29,8 @@ class ResultPresenter (
 
     override fun didTapResultButton(userText: String) {
 
-        val dialog = AlertDialog.Builder(context)
-
         //EditTextが空ならイベント何もなくダイアログを閉じる。
         if (userText.equals("")) {
-            view.closeDialog(dialog)
             view.showErrorMessage()
         } else {
             //rankingに登録
