@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import java.io.Serializable
@@ -76,6 +77,10 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
     override fun transitToTopPage() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun showErrorMessage() {
+        Toast.makeText(applicationContext, "名前を入力していないため、\n登録できませんでした。", Toast.LENGTH_LONG).show()
     }
 
     data class RankingData (
