@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import com.yui.koalassimonsaysgame_android.ApplicationController
-import com.yui.koalassimonsaysgame_android.rankingPage.RecyclerListAdapter
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 interface UserRankingModelContract {
@@ -75,7 +74,6 @@ class UserRankingModel: UserRankingModelContract {
 
         Log.i("中身","${rankingDataList}")
         return rankingDataList
-//        adapter.notifyDataSetChanged()
     }
 
     override fun deleteData() {

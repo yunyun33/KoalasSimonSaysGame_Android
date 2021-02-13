@@ -43,6 +43,8 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         }
     }
 
+    //RankingContract.View
+
     //Adapter生成してRecyclerViewにセットする。
     override fun setRankingData(data: MutableList<ResultActivity.RankingData>) {
         recyclerView.adapter = RecyclerListAdapter(data)
