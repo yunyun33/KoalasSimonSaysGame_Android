@@ -5,4 +5,15 @@
     <string name="transitToTopPage_text">ホームに戻る</string>
 
     <string name="transitToRegistrationDialog_text">次へ</string>
+
+    <string name="registerForRankingDialog_editText_hint">What\'s your name?</string>
+    <string name="registerForRankingDialog_title">ランキングに登録しますか？</string>
+    <string name="registerForRankingDialog_positiveText">登録する</string>
+    <string name="registerForRankingDialog_negativeText">登録しない</string>
+
+    <string name="rankingActivity_title">ランキング</string>
+    <string name="deleteRankingDataDialog_title">ランキングデータを\n削除します。</string>
+    <string name="deleteRankingDataDialog_message">データは全て削除されます。</string>
+    <string name="deleteRankingDataDialog_positiveText">OK</string>
+    <string name="deleteRankingDataDialog_negativeText">キャンセル</string>
 </resources>

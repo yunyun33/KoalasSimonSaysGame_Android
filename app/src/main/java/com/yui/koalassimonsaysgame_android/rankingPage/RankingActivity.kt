@@ -25,7 +25,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
-        title = "ランキング"
+        title = this.getString(R.string.rankingActivity_title)
 
         slidr = Slidr.attach(this)
 
@@ -59,16 +59,16 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
     override fun showAlertDialog() {
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("ランキングデータを\n削除します。")
-        dialog.setMessage("データは全て削除されます。")
+        dialog.setTitle(this.getString(R.string.deleteRankingDataDialog_title))
+        dialog.setMessage(this.getString(R.string.deleteRankingDataDialog_message))
 
-        dialog.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+        dialog.setPositiveButton(this.getString(R.string.deleteRankingDataDialog_positiveText), DialogInterface.OnClickListener { dialog, which ->
 
             // OKボタン押したときの処理(ランキングデータを削除する)
             presenter.didTapPositiveButtonOnDeletePopup()
         })
 
-        dialog.setNegativeButton("キャンセル", null)
+        dialog.setNegativeButton(this.getString(R.string.deleteRankingDataDialog_negativeText), null)
         dialog.show()
     }
 

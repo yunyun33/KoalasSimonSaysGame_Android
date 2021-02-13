@@ -34,20 +34,20 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
         findViewById<Button>(R.id.displayTheRegistrationDialogButton).setOnClickListener() {
             val nameText = EditText(this)
-            nameText.setHint("What's your name?")
+            nameText.setHint(this.getString(R.string.registerForRankingDialog_editText_hint))
 
             val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("ランキングに登録しますか？")
+            dialog.setTitle(this.getString(R.string.registerForRankingDialog_title))
             dialog.setView(nameText)
 
-            dialog.setPositiveButton("登録する", DialogInterface.OnClickListener { dialog, which ->
+            dialog.setPositiveButton(this.getString(R.string.registerForRankingDialog_positiveText), DialogInterface.OnClickListener { dialog, which ->
                 // OKボタン押したときの処理(rankingに登録する)
                 val userText = nameText.getText().toString().trim()
 
                 presenter.didTapResultButton(userText)
             })
 
-            dialog.setNegativeButton("登録しない", DialogInterface.OnClickListener { dialog, which ->
+            dialog.setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
                 presenter.didTapTransitToTopPage()
             })
             dialog.show()
