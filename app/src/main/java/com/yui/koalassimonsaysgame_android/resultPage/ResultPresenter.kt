@@ -31,7 +31,7 @@ class ResultPresenter (
 
         //EditTextが空ならイベント何もなくダイアログを閉じる。
         if (userText.equals("")) {
-            view.showErrorMessage()
+            view.showEmptyErrorMessage()
         } else {
             //rankingに登録
             userRankingModel.insertData(userText, totalScore.toString())
