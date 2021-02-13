@@ -16,4 +16,5 @@
     <string name="deleteRankingDataDialog_message">データは全て削除されます。</string>
     <string name="deleteRankingDataDialog_positiveText">OK</string>
     <string name="deleteRankingDataDialog_negativeText">キャンセル</string>
+    <string name="emptyErrorMessage">名前を入力していないため\n登録できませんでした。</string>
 </resources>

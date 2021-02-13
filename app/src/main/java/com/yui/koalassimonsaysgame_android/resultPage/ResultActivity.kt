@@ -76,7 +76,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
     }
 
     override fun showEmptyErrorMessage() {
-        Toast.makeText(applicationContext, "名前を入力していないため、\n登録できませんでした。", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, this.getString(R.string.emptyErrorMessage), Toast.LENGTH_LONG).show()
     }
 
     data class RankingData (
