@@ -44,4 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //スワイプできるようにする
+    implementation 'com.r0adkll:slidableactivity:2.0.6'
 }

@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.r0adkll.slidr.Slidr
+import com.r0adkll.slidr.model.SlidrInterface
 import com.yui.koalassimonsaysgame_android.R
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
@@ -16,11 +18,16 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
 
     lateinit var recyclerView: RecyclerView
 
+    //スワイプで前画面に戻れるようにする
+    private var slidr: SlidrInterface? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
         title = "ランキング"
+
+        slidr = Slidr.attach(this)
 
         presenter = RankingPresenter(this)
 
