@@ -13,5 +13,4 @@ class RecyclerListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) 
     val rankingImageView: ImageView = itemView.findViewById(R.id.ranking_imageView)
     val name: TextView = itemView.findViewById(R.id.name)
     val score: TextView = itemView.findViewById(R.id.score)
-
 }

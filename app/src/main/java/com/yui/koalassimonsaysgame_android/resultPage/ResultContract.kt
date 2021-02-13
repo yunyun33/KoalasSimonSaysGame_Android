@@ -1,7 +1,5 @@
 package com.yui.koalassimonsaysgame_android.resultPage
 
-import android.app.AlertDialog
-
 interface ResultContract {
     interface View {
         fun showTotalScore(scoreText: String)

@@ -1,6 +1,5 @@
 package com.yui.koalassimonsaysgame_android.resultPage
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import com.yui.koalassimonsaysgame_android.ApplicationController
