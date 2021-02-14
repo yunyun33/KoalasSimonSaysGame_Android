@@ -30,5 +30,6 @@ class RankingPresenter(
         //deleteButton押されたらリストに表示されているデータをすぐに消す(表示を空にする)。
         val data: MutableList<ResultActivity.RankingData> = mutableListOf()
         view.resetRankingData(data)
+        view.disableDeleteButton()
     }
 }
