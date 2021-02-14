@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        transitToPlayGamePage()
-        transitToRankingPage()
+        setOnClickListener()
     }
 
     //Android端末の戻るボタン無効化
@@ -21,17 +20,16 @@ class MainActivity : AppCompatActivity() {
         //中身を空にすることで戻るボタンが無効化される。
     }
 
-    private fun transitToPlayGamePage() {
-        val startButton = findViewById<ImageButton>(R.id.startButton)
-        startButton.setOnClickListener() {
+    private fun setOnClickListener() {
+
+        //transitToPlayGamePage
+        findViewById<ImageButton>(R.id.startButton).setOnClickListener() {
             val intent = Intent(this, PlayGameActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    private fun transitToRankingPage() {
-        val rankingButton = findViewById<ImageButton>(R.id.rankingButton)
-        rankingButton.setOnClickListener() {
+        //transitToRankingPage
+        findViewById<ImageButton>(R.id.rankingButton).setOnClickListener() {
             val intent = Intent(this, RankingActivity::class.java)
             startActivity(intent)
         }
