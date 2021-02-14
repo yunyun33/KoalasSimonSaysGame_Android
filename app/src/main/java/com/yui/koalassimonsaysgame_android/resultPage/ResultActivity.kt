@@ -30,7 +30,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     private fun setOnClickListener() {
         findViewById<Button>(R.id.transitToTopPageButton).setOnClickListener() {
-            presenter.didTapTransitToTopPage()
+            backToStartPage()
         }
 
         findViewById<Button>(R.id.displayTheRegistrationDialogButton).setOnClickListener() {
@@ -49,7 +49,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
             })
 
             dialog.setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
-                presenter.didTapTransitToTopPage()
+                backToStartPage()
             })
             dialog.show()
         }

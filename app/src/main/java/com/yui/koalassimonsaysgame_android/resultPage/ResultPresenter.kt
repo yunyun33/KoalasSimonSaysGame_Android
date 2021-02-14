@@ -27,18 +27,14 @@ class ResultPresenter (
     }
 
     override fun didTapRegisterButton(userText: String) {
-        
+
         if (userText.equals("")) {
             view.showEmptyErrorMessage()
         } else {
             //rankingに登録
             userRankingModel.insertData(userText, totalScore.toString())
-            didTapTransitToTopPage()
+            view.backToStartPage()
         }
-    }
-
-    override fun didTapTransitToTopPage() {
-        view.backToStartPage()
     }
 
     //コアラさんのコメント
