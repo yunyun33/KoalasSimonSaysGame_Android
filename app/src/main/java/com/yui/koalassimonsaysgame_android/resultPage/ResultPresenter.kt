@@ -37,6 +37,10 @@ class ResultPresenter (
         }
     }
 
+    override fun didTapTransitToTopPage() {
+        view.backToStartPage()
+    }
+
     //コアラさんのコメント
     private fun getKoalaMessage(totalScore: Int) : String {
         return when (totalScore) {
