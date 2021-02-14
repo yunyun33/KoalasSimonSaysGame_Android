@@ -1,11 +1,18 @@
-package com.yui.koalassimonsaysgame_android.totalScorePage
+package com.yui.koalassimonsaysgame_android.resultPage
 
+import android.content.Context
 import android.content.Intent
+import com.yui.koalassimonsaysgame_android.ApplicationController
+import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 
-class TotalScorePresenter (
-        private val view: TotalScoreContract.View,
-        intent: Intent
-): TotalScoreContract.Presenter {
+class ResultPresenter (
+    private val view: ResultContract.View,
+    intent: Intent
+): ResultContract.Presenter {
+
+    private val userRankingModel = UserRankingModel()
+
+    var context: Context = ApplicationController.applicationContext()
 
     // 前の画面から渡されたtotalScoreを取得する。
     private val totalScore: Int = intent.getIntExtra("totalScore", 0)
@@ -19,8 +26,23 @@ class TotalScorePresenter (
         view.showKoalaMessage(koalaMessage)
     }
 
+    override fun didTapRegisterButton(userText: String) {
+
+        if (userText.equals("")) {
+            view.showEmptyErrorMessage()
+        } else {
+            //rankingに登録
+            userRankingModel.insertData(userText, totalScore.toString())
+            view.backToStartPage()
+        }
+    }
+
+    override fun didTapNoRegisterButton() {
+        view.backToStartPage()
+    }
+
     override fun didTapTransitToTopPage() {
-        view.transitToTopPage()
+        view.backToStartPage()
     }
 
     //コアラさんのコメント

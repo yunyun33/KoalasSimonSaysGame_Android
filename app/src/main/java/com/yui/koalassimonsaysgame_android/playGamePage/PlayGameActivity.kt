@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
-import com.yui.koalassimonsaysgame_android.totalScorePage.TotalScoreActivity
+import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
 
@@ -76,7 +76,7 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
     }
 
     override fun transitToTotalScorePage(totalScore: Int) {
-        val intent = Intent(this, TotalScoreActivity::class.java)
+        val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("totalScore", totalScore)
         startActivity(intent)
     }
