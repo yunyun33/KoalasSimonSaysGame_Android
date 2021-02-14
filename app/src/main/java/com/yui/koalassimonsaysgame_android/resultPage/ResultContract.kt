@@ -11,7 +11,7 @@ interface ResultContract {
 
     interface Presenter {
         fun didCreateView()
-        fun didTapResultButton(userText: String)
+        fun didTapRegisterButton(userText: String)
         fun didTapTransitToTopPage()
     }
 }

@@ -45,7 +45,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
                 // OKボタン押したときの処理(rankingに登録する)
                 val userText = nameText.getText().toString().trim()
 
-                presenter.didTapResultButton(userText)
+                presenter.didTapRegisterButton(userText)
             })
 
             dialog.setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
