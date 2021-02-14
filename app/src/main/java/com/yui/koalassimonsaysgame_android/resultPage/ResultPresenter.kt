@@ -27,8 +27,7 @@ class ResultPresenter (
     }
 
     override fun didTapRegisterButton(userText: String) {
-
-        //EditTextが空ならイベント何もなくダイアログを閉じる。
+        
         if (userText.equals("")) {
             view.showEmptyErrorMessage()
         } else {
