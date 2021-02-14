@@ -49,7 +49,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
             })
 
             dialog.setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
-                presenter.didTapTransitToTopPage()
+                backToStartPage()
             })
             dialog.show()
         }
