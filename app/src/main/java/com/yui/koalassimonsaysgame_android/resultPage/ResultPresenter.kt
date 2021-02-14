@@ -37,6 +37,10 @@ class ResultPresenter (
         }
     }
 
+    override fun didTapNoRegisterButton() {
+        view.backToStartPage()
+    }
+
     override fun didTapTransitToTopPage() {
         view.backToStartPage()
     }
