@@ -70,8 +70,11 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         findViewById<TextView>(R.id.koalaMessageText).text = messageText
     }
 
-    override fun transitToTopPage() {
+    override fun backToStartPage() {
         val intent = Intent(this, MainActivity::class.java)
+        //今までのページのインスタンスは破棄される。
+        //トップページに戻ったら、端末の戻るボタン押した場合、アプリが終了するようになる。
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 

@@ -15,11 +15,6 @@ class MainActivity : AppCompatActivity() {
         setOnClickListener()
     }
 
-    //Android端末の戻るボタン無効化
-    override fun onBackPressed() {
-        //中身を空にすることで戻るボタンが無効化される。
-    }
-
     private fun setOnClickListener() {
 
         //transitToPlayGamePage

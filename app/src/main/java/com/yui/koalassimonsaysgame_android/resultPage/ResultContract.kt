@@ -6,7 +6,7 @@ interface ResultContract {
         fun showKoalaMessage(messageText: String)
         fun showEmptyErrorMessage()
 
-        fun transitToTopPage()
+        fun backToStartPage()
     }
 
     interface Presenter {

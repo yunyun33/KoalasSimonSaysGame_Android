@@ -39,7 +39,7 @@ class ResultPresenter (
     }
 
     override fun didTapTransitToTopPage() {
-        view.transitToTopPage()
+        view.backToStartPage()
     }
 
     //コアラさんのコメント
