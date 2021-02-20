@@ -31,6 +31,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //transitToRankingPage(worldRankingも同じActivity)
+        findViewById<ImageButton>(R.id.worldRankingButton).setOnClickListener() {
+            val intent = Intent(this, RankingActivity::class.java)
+            startActivity(intent)
+        }
+
         //oss-licensePage
         findViewById<Button>(R.id.licenseButton).setOnClickListener() {
             val intent = Intent(this, OssLicensesMenuActivity::class.java)

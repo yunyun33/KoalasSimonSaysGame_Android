@@ -2,6 +2,7 @@
     <string name="app_name">コアラさんの旗ふりゲーム</string>
     <string name="startButton_text">Game Start</string>
     <string name="rankingButton_text">Ranking</string>
+    <string name="worldRankingButton_text">World Ranking</string>
     <string name="transitToTopPage_text">ホームに戻る</string>
 
     <string name="transitToRegistrationDialog_text">次へ</string>
