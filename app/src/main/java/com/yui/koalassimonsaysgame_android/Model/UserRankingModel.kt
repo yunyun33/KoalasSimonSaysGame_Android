@@ -1,13 +1,17 @@
 package com.yui.koalassimonsaysgame_android.Model
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 interface UserRankingModelContract {
     fun insertData(userName: String, score: String)
+    fun insertDataToFirebase(userName: String, score: String)
     fun selectData() : MutableList<ResultActivity.RankingData>
     fun deleteData()
 }
@@ -39,6 +43,24 @@ class UserRankingModel: UserRankingModelContract {
         } catch(exception: Exception) {
             Log.e("insertData", exception.toString())
         }
+    }
+
+    override fun insertDataToFirebase(userName: String, score: String) {
+        val db = Firebase.firestore
+
+        val user = hashMapOf(
+            "rankingName" to userName,
+            "totalScore" to score.toInt()
+        )
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
     }
 
     override fun selectData(): MutableList<ResultActivity.RankingData> {
@@ -96,6 +118,10 @@ class UserRankingModel: UserRankingModelContract {
 class UserRankingModelMock: UserRankingModelContract {
 
     override fun insertData(userName: String, score: String) {
+
+    }
+
+    override fun insertDataToFirebase(userName: String, score: String) {
 
     }
 
