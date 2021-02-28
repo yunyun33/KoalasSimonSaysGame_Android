@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "64001972040",
+    "firebase_url": "https://koalassimonsaysgame.firebaseio.com",
+    "project_id": "koalassimonsaysgame",
+    "storage_bucket": "koalassimonsaysgame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64001972040:android:210f1e274af11dbdb3457d",
+        "android_client_info": {
+          "package_name": "com.yui.koalassimonsaysgame_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64001972040-21ug6viomdm3l1lba2oc3ljtn37ghgo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs68hkYqczoa3tnrVIM-VB2kvuUA9Cs7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64001972040-21ug6viomdm3l1lba2oc3ljtn37ghgo9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "64001972040-ja55s6lk0vu7sun9g1bgab3c24hvuqlc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yui.KoalasSimonSaysGame"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

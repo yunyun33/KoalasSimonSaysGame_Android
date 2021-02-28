@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.android.gms.oss-licenses-plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -50,4 +51,7 @@ dependencies {
     implementation 'com.r0adkll:slidableactivity:2.1.0'
     //oss-licenses
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
