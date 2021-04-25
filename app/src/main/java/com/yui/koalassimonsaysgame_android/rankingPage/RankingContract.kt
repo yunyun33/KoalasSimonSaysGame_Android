@@ -12,6 +12,7 @@ interface RankingContract {
 
     interface Presenter {
         fun didCreate()
+        fun didCreateWorldRanking()
         fun didTapPositiveButtonOnDeletePopup()
         fun didTapDeleteButton()
     }

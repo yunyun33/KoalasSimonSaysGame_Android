@@ -39,7 +39,12 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
         recyclerView.setHasFixedSize(true)
 
+
+        //local ranking表示
         presenter.didCreate()
+
+        //Firebase ranking表示
+        presenter.didCreateWorldRanking()
 
         setOnClickListener()
     }
