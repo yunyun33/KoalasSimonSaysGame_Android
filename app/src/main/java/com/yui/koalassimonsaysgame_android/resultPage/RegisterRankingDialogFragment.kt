@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.yui.koalassimonsaysgame_android.R
@@ -15,7 +16,7 @@ class RegisterRankingDialogFragment : DialogFragment() {
         val builder = AlertDialog.Builder(activity)
         val inflater = activity!!.layoutInflater
         val view = inflater.inflate(R.layout.activity_register_ranking_dialog_fragment, null)
-        
+
         builder.setView(view)
             .setPositiveButton(this.getString(R.string.registerForRankingDialog_positiveText), DialogInterface.OnClickListener { dialog, which ->
 
@@ -24,6 +25,12 @@ class RegisterRankingDialogFragment : DialogFragment() {
                 nameText.setHint(this.getString(R.string.registerForRankingDialog_editText_hint))
 
                 val userText = nameText.getText().toString().trim()
+
+                val worldRankingSwitch = view.findViewById<Switch>(R.id.worldRankingSwitch)
+                if (worldRankingSwitch.isChecked == true) {
+                    // worldRankingに登録する。
+                    Toast.makeText(activity, "worldRankingに登録するよ", Toast.LENGTH_SHORT).show()
+                }
 
                 // Fragment表示の確認のため、一旦処理はせずtoastにする。
                 Toast.makeText(activity, nameText.text, Toast.LENGTH_SHORT).show()
