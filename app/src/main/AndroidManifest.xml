@@ -3,14 +3,15 @@
     package="com.yui.koalassimonsaysgame_android">
 
     <application
+        android:name=".ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KoalasSimonSaysGame_android"
-        android:name=".ApplicationController">
-        <activity android:name=".rankingPage.RankingActivity"></activity>
+        android:theme="@style/Theme.KoalasSimonSaysGame_android">
+        <activity android:name=".resultPage.RegisterRankingDialogFragment"></activity>
+        <activity android:name=".rankingPage.RankingActivity" />
         <activity android:name=".resultPage.ResultActivity" />
         <activity android:name=".playGamePage.PlayGameActivity" />
         <activity android:name=".MainActivity">

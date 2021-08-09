@@ -1,19 +1,15 @@
 package com.yui.koalassimonsaysgame_android.resultPage
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import java.io.Serializable
 
-open class ResultActivity : AppCompatActivity(), ResultContract.View {
+
+class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     private lateinit var presenter: ResultContract.Presenter
 
@@ -26,6 +22,7 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         presenter = ResultPresenter(this, intent)
 
         presenter.didCreateView()
+
     }
 
     private fun setOnClickListener() {
@@ -34,24 +31,8 @@ open class ResultActivity : AppCompatActivity(), ResultContract.View {
         }
 
         findViewById<Button>(R.id.displayTheRegistrationDialogButton).setOnClickListener() {
-            val nameText = EditText(this)
-            nameText.setHint(this.getString(R.string.registerForRankingDialog_editText_hint))
 
-            val dialog = AlertDialog.Builder(this)
-            dialog.setTitle(this.getString(R.string.registerForRankingDialog_title))
-            dialog.setView(nameText)
-
-            dialog.setPositiveButton(this.getString(R.string.registerForRankingDialog_positiveText), DialogInterface.OnClickListener { dialog, which ->
-                // OKボタン押したときの処理(rankingに登録する)
-                val userText = nameText.getText().toString().trim()
-
-                presenter.didTapRegisterButton(userText)
-            })
-
-            dialog.setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
-                presenter.didTapNoRegisterButton()
-            })
-            dialog.show()
+            RegisterRankingDialogFragment.newInstance().show(supportFragmentManager, null)
         }
     }
 
