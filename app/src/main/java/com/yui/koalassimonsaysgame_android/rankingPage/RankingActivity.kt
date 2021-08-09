@@ -2,15 +2,18 @@ package com.yui.koalassimonsaysgame_android.rankingPage
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
+import android.nfc.NfcAdapter.EXTRA_DATA
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.r0adkll.slidr.Slidr
 import com.r0adkll.slidr.model.SlidrInterface
+import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
+
 
 class RankingActivity : AppCompatActivity(), RankingContract.View {
 
@@ -39,12 +42,7 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
         //RecyclerViewのレイアウトサイズを変更しない設定をONにする(パフォーマンス向上のため)
         recyclerView.setHasFixedSize(true)
 
-
-        //local ranking表示
-        presenter.didCreate()
-
-        //Firebase ranking表示
-        presenter.didCreateWorldRanking()
+        showRankingData()
 
         setOnClickListener()
     }
@@ -60,6 +58,19 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
     //Adapter生成してRecyclerViewにセットする。
     override fun setRankingData(data: MutableList<ResultActivity.RankingData>) {
         recyclerView.adapter = RecyclerListAdapter(data)
+
+    }
+
+    override fun showRankingData() {
+        val isWorldRanking = intent.getBooleanExtra("WORLDRANKING_KEY", false)
+
+        if (isWorldRanking == false) {
+            //local ranking表示
+            presenter.didCreate()
+        } else if (isWorldRanking == true) {
+            //Firebase ranking表示
+            presenter.didCreateWorldRanking()
+        }
     }
 
     override fun showAlertDialog() {

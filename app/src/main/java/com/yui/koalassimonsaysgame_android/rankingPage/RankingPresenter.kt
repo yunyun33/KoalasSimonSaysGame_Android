@@ -12,8 +12,6 @@ class RankingPresenter(
 
     private val userRankingModel: UserRankingModelContract = UserRankingModel()
 
-    val scope = CoroutineScope(Dispatchers.Default)
-
     override fun didCreate() {
         val rankingData = userRankingModel.selectData()
 
