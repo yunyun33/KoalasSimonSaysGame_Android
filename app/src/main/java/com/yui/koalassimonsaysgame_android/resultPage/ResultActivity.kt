@@ -8,7 +8,6 @@ import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 import java.io.Serializable
 
-
 class ResultActivity : AppCompatActivity(), ResultContract.View {
 
     private lateinit var presenter: ResultContract.Presenter
@@ -22,7 +21,6 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
         presenter = ResultPresenter(this, intent)
 
         presenter.didCreateView()
-
     }
 
     private fun setOnClickListener() {
@@ -57,10 +55,6 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
         //トップページに戻ったら、端末の戻るボタン押した場合、アプリが終了するようになる。
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
-    }
-
-    override fun showEmptyErrorMessage() {
-        Toast.makeText(applicationContext, this.getString(R.string.emptyErrorMessage), Toast.LENGTH_LONG).show()
     }
 
     data class RankingData (
