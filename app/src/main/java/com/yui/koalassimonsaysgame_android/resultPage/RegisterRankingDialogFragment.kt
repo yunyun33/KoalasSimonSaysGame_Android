@@ -3,6 +3,7 @@ package com.yui.koalassimonsaysgame_android.resultPage
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Switch
@@ -10,9 +11,15 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.yui.koalassimonsaysgame_android.R
 
-class RegisterRankingDialogFragment : DialogFragment() {
+class RegisterRankingDialogFragment : DialogFragment(), RegisterRankingDialogFragmentContract.View {
+
+    private lateinit var presenter: RegisterRankingDialogFragmentContract.Presenter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val intent = Intent(activity, RegisterRankingDialogFragment::class.java)
+        presenter = RegisterRankingDialogFragmentPresenter(this, intent)
+
         val builder = AlertDialog.Builder(activity)
         val inflater = activity!!.layoutInflater
         val view = inflater.inflate(R.layout.activity_register_ranking_dialog_fragment, null)
@@ -28,20 +35,20 @@ class RegisterRankingDialogFragment : DialogFragment() {
 
                 val worldRankingSwitch = view.findViewById<Switch>(R.id.worldRankingSwitch)
                 if (worldRankingSwitch.isChecked == true) {
-                    // worldRankingに登録する。
+
+                    // worldRankingも登録する。
+                    presenter.didTapRegisterButton(userText, true)
                     Toast.makeText(activity, "worldRankingに登録するよ", Toast.LENGTH_SHORT).show()
                 }
 
-                // Fragment表示の確認のため、一旦処理はせずtoastにする。
-                Toast.makeText(activity, nameText.text, Toast.LENGTH_SHORT).show()
-//                presenter.didTapRegisterButton(userText)
+                // 端末のrankingnだけ登録する。
+                presenter.didTapRegisterButton(userText, false)
             })
 
             .setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
 
-                // Fragment表示の確認のため、一旦処理はせずtoastにする。
-                Toast.makeText(activity, "登録しない", Toast.LENGTH_SHORT).show()
-//                presenter.didTapNoRegisterButton()
+                // 登録しない場合は、トップページに戻る。
+                presenter.didTapNoRegisterButton()
             })
 
         return builder.create()
@@ -53,4 +60,17 @@ class RegisterRankingDialogFragment : DialogFragment() {
         }
     }
 
+    // RegisterRankingDialogFragmentContract.View
+
+    override fun backToStartPage() {
+        val intent = Intent(activity, RegisterRankingDialogFragment::class.java)
+        //今までのページのインスタンスは破棄される。
+        //トップページに戻ったら、端末の戻るボタン押した場合、アプリが終了するようになる。
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
+    override fun showEmptyErrorMessage() {
+        Toast.makeText(activity, this.getString(R.string.emptyErrorMessage), Toast.LENGTH_LONG).show()
+    }
 }
