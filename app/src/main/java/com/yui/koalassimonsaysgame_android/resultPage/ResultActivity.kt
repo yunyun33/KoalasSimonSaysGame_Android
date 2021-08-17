@@ -34,12 +34,12 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
         }
     }
 
-    //Android端末の戻るボタン無効化
+    // Android端末の戻るボタン無効化
     override fun onBackPressed() {
-        //中身を空にすることで戻るボタンが無効化される。
+        // 中身を空にすることで戻るボタンが無効化される。
     }
 
-    //PlayGameContract.View
+    // PlayGameContract.View
 
     override fun showTotalScore(scoreText: String) {
         findViewById<TextView>(R.id.totalScoreText).text = scoreText
@@ -50,9 +50,9 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
     }
 
     override fun backToStartPage() {
+
         val intent = Intent(this, MainActivity::class.java)
-        //今までのページのインスタンスは破棄される。
-        //トップページに戻ったら、端末の戻るボタン押した場合、アプリが終了するようになる。
+        // 今までのページのインスタンスは破棄される。(Activityのスタックを消すようにする。)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
