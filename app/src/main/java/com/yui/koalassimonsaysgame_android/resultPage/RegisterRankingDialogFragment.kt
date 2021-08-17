@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Switch
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
 
 class RegisterRankingDialogFragment : DialogFragment(), RegisterRankingDialogFragmentContract.View {
@@ -63,9 +64,9 @@ class RegisterRankingDialogFragment : DialogFragment(), RegisterRankingDialogFra
     // RegisterRankingDialogFragmentContract.View
 
     override fun backToStartPage() {
-        val intent = Intent(activity, RegisterRankingDialogFragment::class.java)
-        //今までのページのインスタンスは破棄される。
-        //トップページに戻ったら、端末の戻るボタン押した場合、アプリが終了するようになる。
+
+        val intent = Intent(activity, MainActivity::class.java)
+        // 今までのページのインスタンスは破棄される。(Activityのスタックを消すようにする。(Fragmentも消える))
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
