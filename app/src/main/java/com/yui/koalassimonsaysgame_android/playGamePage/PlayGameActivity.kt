@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
+import com.yui.koalassimonsaysgame_android.resultPage.RegisterRankingDialogFragment
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
@@ -79,6 +80,16 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("totalScore", totalScore)
         startActivity(intent)
+    }
+
+    override fun SetScoreForTheFragment(totalScore: Int) {
+        // Bundleインスタンスを作成
+        val bundle = Bundle()
+        // 値をセットする
+        bundle.putInt("totalScoreForFragment", totalScore)
+        // Fragmentに値をセットする
+        val fragment = RegisterRankingDialogFragment()
+        fragment.arguments = bundle
     }
 
     override fun showInstructionText(text: String) {

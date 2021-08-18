@@ -9,6 +9,7 @@ interface PlayGameContract {
 
         fun showCountDown(text: String)
         fun transitToTotalScorePage(totalScore: Int)
+        fun SetScoreForTheFragment(totalScore: Int)
         fun showInstructionText(text: String)
 
         fun transitToTopPage()
