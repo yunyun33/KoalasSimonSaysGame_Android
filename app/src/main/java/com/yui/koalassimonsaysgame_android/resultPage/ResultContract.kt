@@ -10,5 +10,6 @@ interface ResultContract {
     interface Presenter {
         fun didCreateView()
         fun didTapTransitToTopPage()
+        fun getTotalScore(): Int
     }
 }

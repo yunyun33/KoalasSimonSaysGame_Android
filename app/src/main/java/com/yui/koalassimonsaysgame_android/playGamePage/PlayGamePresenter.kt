@@ -108,7 +108,6 @@ class PlayGamePresenter (
                 }
                 Log.i("${totalScore}", "スコア")
                 koalaMusic.stop()
-                view.SetScoreForTheFragment(totalScore)
                 view.transitToTotalScorePage(totalScore)
             }
         }.start()

@@ -37,13 +37,15 @@ class RegisterRankingDialogFragment : DialogFragment(), RegisterRankingDialogFra
                 val worldRankingSwitch = view.findViewById<Switch>(R.id.worldRankingSwitch)
                 if (worldRankingSwitch.isChecked == true) {
 
-                    // worldRankingも登録する。
+                    // 端末のrankingとworldRankingの両方に登録する。
                     presenter.didTapRegisterButton(userText, true)
                     Toast.makeText(activity, "worldRankingに登録するよ", Toast.LENGTH_SHORT).show()
-                }
 
-                // 端末のrankingnだけ登録する。
-                presenter.didTapRegisterButton(userText, false)
+                } else {
+
+                    // 端末のrankingだけ登録する。
+                    presenter.didTapRegisterButton(userText, false)
+                }
             })
 
             .setNegativeButton(this.getString(R.string.registerForRankingDialog_negativeText), DialogInterface.OnClickListener { dialog, which ->
@@ -56,8 +58,14 @@ class RegisterRankingDialogFragment : DialogFragment(), RegisterRankingDialogFra
     }
 
     companion object {
-        fun newInstance(): RegisterRankingDialogFragment {
-            return RegisterRankingDialogFragment()
+        const val bundleKeyTotalScore = "totalScoreForFragment"
+
+        fun newInstance(totalScore: Int): RegisterRankingDialogFragment {
+            val fragment = RegisterRankingDialogFragment()
+            val bundle = Bundle()
+            bundle.putInt(bundleKeyTotalScore, totalScore)
+            fragment.arguments = bundle
+            return fragment
         }
     }
 

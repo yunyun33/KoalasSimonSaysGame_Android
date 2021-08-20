@@ -2,7 +2,8 @@ package com.yui.koalassimonsaysgame_android.resultPage
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.yui.koalassimonsaysgame_android.MainActivity
 import com.yui.koalassimonsaysgame_android.R
@@ -29,8 +30,8 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
         }
 
         findViewById<Button>(R.id.displayTheRegistrationDialogButton).setOnClickListener() {
-
-            RegisterRankingDialogFragment.newInstance().show(supportFragmentManager, null)
+            val dialog = RegisterRankingDialogFragment.newInstance(presenter.getTotalScore())
+            dialog.show(supportFragmentManager, null)
         }
     }
 

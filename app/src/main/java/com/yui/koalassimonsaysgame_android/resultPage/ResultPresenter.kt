@@ -27,6 +27,10 @@ class ResultPresenter(
         view.backToStartPage()
     }
 
+    override fun getTotalScore(): Int {
+        return totalScore
+    }
+
     //コアラさんのコメント
     private fun getKoalaMessage(totalScore: Int) : String {
         return when (totalScore) {

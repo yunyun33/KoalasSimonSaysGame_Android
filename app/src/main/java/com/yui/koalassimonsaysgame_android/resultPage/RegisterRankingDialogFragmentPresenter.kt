@@ -15,7 +15,7 @@ class RegisterRankingDialogFragmentPresenter(
     var context: Context = ApplicationController.applicationContext()
 
     // 前の画面から渡されたtotalScoreを取得する。
-    private val totalScore: Int = arguments.getIntExtra("totalScoreForFragment", 0)
+    private val totalScore: Int = view.arguments?.getInt("totalScoreForFragment") ?: 0
 
     // RegisterRankingDialogFragmentContract.Presenter
 
