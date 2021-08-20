@@ -13,6 +13,7 @@
     <string name="registerForRankingDialog_negativeText">登録しない</string>
 
     <string name="rankingActivity_title">ランキング</string>
+    <string name="worldRankingActivity_title">World Ranking</string>
     <string name="deleteRankingDataDialog_title">ランキングデータを\n削除します。</string>
     <string name="deleteRankingDataDialog_message">データは全て削除されます。</string>
     <string name="deleteRankingDataDialog_positiveText">OK</string>

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.nfc.NfcAdapter.EXTRA_DATA
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,6 +69,8 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
             //local ranking表示
             presenter.didCreate()
         } else if (isWorldRanking == true) {
+            title = this.getString(R.string.worldRankingActivity_title)
+            disableDeleteButton()
             //Firebase ranking表示
             presenter.didCreateWorldRanking()
         }
@@ -89,8 +92,8 @@ class RankingActivity : AppCompatActivity(), RankingContract.View {
     }
 
     override fun disableDeleteButton() {
-        //ゴミ箱ボタンを無効にする。
-        findViewById<ImageButton>(R.id.deleteButton).isEnabled = false
+        //ゴミ箱ボタンを非表示にする。
+        findViewById<ImageButton>(R.id.deleteButton).visibility = View.INVISIBLE
     }
 
     override fun resetRankingData(data: MutableList<ResultActivity.RankingData>) {

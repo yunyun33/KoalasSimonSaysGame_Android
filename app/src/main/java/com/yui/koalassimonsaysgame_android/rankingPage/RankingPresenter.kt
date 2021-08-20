@@ -27,11 +27,7 @@ class RankingPresenter(
         userRankingModel.selectDataToFirebase {
             Log.i("ランキングデータ：", "${it.count()}")
 
-            if (it.isEmpty()) {
-                view.disableDeleteButton()
-            } else {
-                view.setRankingData(it)
-            }
+            view.setRankingData(it)
         }
     }
 
