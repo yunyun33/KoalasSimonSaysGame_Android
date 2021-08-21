@@ -117,6 +117,8 @@ class UserRankingModel: UserRankingModelContract {
 
         try {
             db.collection("users")
+                    // 降順に並べ替え
+                    .orderBy("totalScore", Query.Direction.DESCENDING)
                     .get()
                     .addOnSuccessListener { result ->
                         for (document in result) {
