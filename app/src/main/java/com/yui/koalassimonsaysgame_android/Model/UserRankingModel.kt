@@ -4,20 +4,13 @@ import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.yui.koalassimonsaysgame_android.ApplicationController
-import com.yui.koalassimonsaysgame_android.R
-import com.yui.koalassimonsaysgame_android.rankingPage.*
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-
 
 interface UserRankingModelContract {
     fun insertData(userName: String, score: String)
