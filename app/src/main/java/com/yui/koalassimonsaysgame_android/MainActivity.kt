@@ -10,6 +10,7 @@ import com.yui.koalassimonsaysgame_android.playGamePage.PlayGameActivity
 import com.yui.koalassimonsaysgame_android.rankingPage.RankingActivity
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,6 +29,14 @@ class MainActivity : AppCompatActivity() {
         //transitToRankingPage
         findViewById<ImageButton>(R.id.rankingButton).setOnClickListener() {
             val intent = Intent(this, RankingActivity::class.java)
+            intent.putExtra("WORLDRANKING_KEY", false)
+            startActivity(intent)
+        }
+
+        //transitToRankingPage(worldRankingも同じActivity)
+        findViewById<ImageButton>(R.id.worldRankingButton).setOnClickListener() {
+            val intent = Intent(this, RankingActivity::class.java)
+            intent.putExtra("WORLDRANKING_KEY", true)
             startActivity(intent)
         }
 

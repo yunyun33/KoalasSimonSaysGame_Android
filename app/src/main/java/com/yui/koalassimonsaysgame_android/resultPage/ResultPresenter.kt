@@ -3,14 +3,11 @@ package com.yui.koalassimonsaysgame_android.resultPage
 import android.content.Context
 import android.content.Intent
 import com.yui.koalassimonsaysgame_android.ApplicationController
-import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 
-class ResultPresenter (
-    private val view: ResultContract.View,
+class ResultPresenter(
+    private val view: ResultActivity,
     intent: Intent
 ): ResultContract.Presenter {
-
-    private val userRankingModel = UserRankingModel()
 
     var context: Context = ApplicationController.applicationContext()
 
@@ -19,30 +16,19 @@ class ResultPresenter (
 
     private val koalaMessage = getKoalaMessage(totalScore)
 
-    //PlayGameContract.Presenter
+    // PlayGameContract.Presenter
 
     override fun didCreateView() {
         view.showTotalScore("あなたの得点は\n${totalScore}点です。")
         view.showKoalaMessage(koalaMessage)
     }
 
-    override fun didTapRegisterButton(userText: String) {
-
-        if (userText.equals("")) {
-            view.showEmptyErrorMessage()
-        } else {
-            //rankingに登録
-            userRankingModel.insertData(userText, totalScore.toString())
-            view.backToStartPage()
-        }
-    }
-
-    override fun didTapNoRegisterButton() {
-        view.backToStartPage()
-    }
-
     override fun didTapTransitToTopPage() {
         view.backToStartPage()
+    }
+
+    override fun getTotalScore(): Int {
+        return totalScore
     }
 
     //コアラさんのコメント

@@ -5,6 +5,7 @@ import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 interface RankingContract {
     interface View {
         fun setRankingData(data: MutableList<ResultActivity.RankingData>)
+        fun showRankingData()
         fun showAlertDialog()
         fun disableDeleteButton()
         fun resetRankingData(data: MutableList<ResultActivity.RankingData>)
@@ -12,6 +13,7 @@ interface RankingContract {
 
     interface Presenter {
         fun didCreate()
+        fun didCreateWorldRanking()
         fun didTapPositiveButtonOnDeletePopup()
         fun didTapDeleteButton()
     }

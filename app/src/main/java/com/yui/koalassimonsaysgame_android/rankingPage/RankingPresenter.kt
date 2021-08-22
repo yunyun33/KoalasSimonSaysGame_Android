@@ -1,22 +1,33 @@
 package com.yui.koalassimonsaysgame_android.rankingPage
 
+import android.util.Log
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModel
 import com.yui.koalassimonsaysgame_android.Model.UserRankingModelContract
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
+import kotlinx.coroutines.*
 
 class RankingPresenter(
     private val view: RankingContract.View
 ): RankingContract.Presenter {
 
-    private val userRankingModel: UserRankingModelContract  = UserRankingModel()
+    private val userRankingModel: UserRankingModelContract = UserRankingModel()
 
     override fun didCreate() {
-        val rankigData = userRankingModel.selectData()
+        val rankingData = userRankingModel.selectData()
 
-        if (rankigData.isEmpty()) {
+        if (rankingData.isEmpty()) {
             view.disableDeleteButton()
         } else {
-            view.setRankingData(rankigData)
+            view.setRankingData(rankingData)
+        }
+    }
+
+    override fun didCreateWorldRanking() {
+
+        userRankingModel.selectDataToFirebase {
+            Log.i("ランキングデータ：", "${it.count()}")
+
+            view.setRankingData(it)
         }
     }
 

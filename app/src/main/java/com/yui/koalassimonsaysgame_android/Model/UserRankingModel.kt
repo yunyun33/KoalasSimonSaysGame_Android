@@ -1,14 +1,22 @@
 package com.yui.koalassimonsaysgame_android.Model
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.auth.User
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.yui.koalassimonsaysgame_android.ApplicationController
 import com.yui.koalassimonsaysgame_android.resultPage.ResultActivity
 
 interface UserRankingModelContract {
     fun insertData(userName: String, score: String)
+    fun insertDataToFirebase(userName: String, score: String)
     fun selectData() : MutableList<ResultActivity.RankingData>
+    fun selectDataToFirebase(success: (data: MutableList<ResultActivity.RankingData>) -> Unit)
     fun deleteData()
 }
 
@@ -19,6 +27,8 @@ class UserRankingModel: UserRankingModelContract {
     val dbName: String = "ranking.db"
     val tableName: String = "LocalRankingTable"
     val dbVersion: Int = 1
+
+    var options: FirestoreRecyclerOptions<User>? = null
 
     override fun insertData(userName: String, score: String) {
         try {
@@ -39,6 +49,24 @@ class UserRankingModel: UserRankingModelContract {
         } catch(exception: Exception) {
             Log.e("insertData", exception.toString())
         }
+    }
+
+    override fun insertDataToFirebase(userName: String, score: String) {
+        val db = Firebase.firestore
+
+        val user = hashMapOf(
+            "rankingName" to userName,
+            "totalScore" to score.toInt()
+        )
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
     }
 
     override fun selectData(): MutableList<ResultActivity.RankingData> {
@@ -76,6 +104,41 @@ class UserRankingModel: UserRankingModelContract {
         return rankingDataList
     }
 
+    override fun selectDataToFirebase(success: (data: MutableList<ResultActivity.RankingData>) -> Unit) {
+        val rankingDataList = mutableListOf<ResultActivity.RankingData>()
+        val db = Firebase.firestore
+
+        try {
+            db.collection("users")
+                    // 降順に並べ替え
+                    .orderBy("totalScore", Query.Direction.DESCENDING)
+                    .get()
+                    .addOnSuccessListener { result ->
+                        for (document in result) {
+                            Log.d(TAG, "DocumentSnapshot data: " + document.data?.get("rankingName"))
+                            Log.d(TAG, "DocumentSnapshot data: " + document.data?.get("totalScore"))
+
+                            val userName: String = document.data?.get("rankingName").toString()
+                            val score: Int = document.data?.get("totalScore").toString().toInt()
+
+                            val worldRankingData = ResultActivity.RankingData(userName, score)
+
+                            rankingDataList.add(worldRankingData)
+                            Log.d(TAG, "rankingDataList: " + rankingDataList)
+
+                        }
+                        Log.d(TAG, "rankingDataListのカウント: " + rankingDataList.count())
+                        success(rankingDataList)
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.w(TAG, "Error getting documents.", exception)
+                    }
+
+        } catch (exception: Exception) {
+            Log.e("selectDataToFirebase", exception.toString())
+        }
+    }
+
     override fun deleteData() {
         try {
             val dbHelper = DataBaseHelper(context, dbName, null, dbVersion)
@@ -93,9 +156,18 @@ class UserRankingModel: UserRankingModelContract {
     }
 }
 
+class User (
+        val rankingName: String = "",
+        val rankingScore: String = ""
+)
+
 class UserRankingModelMock: UserRankingModelContract {
 
     override fun insertData(userName: String, score: String) {
+
+    }
+
+    override fun insertDataToFirebase(userName: String, score: String) {
 
     }
 
@@ -107,6 +179,10 @@ class UserRankingModelMock: UserRankingModelContract {
         rankingData.add(ResultActivity.RankingData("でか", 5))
 
         return rankingData
+    }
+
+    override fun selectDataToFirebase(success: (data: MutableList<ResultActivity.RankingData>) -> Unit) {
+
     }
 
     override fun deleteData() {
