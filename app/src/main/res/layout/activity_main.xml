@@ -142,10 +142,9 @@
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
             android:text="license"
-            android:textColor="#4755A4"
+            android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+             />
 
     </LinearLayout>
 
