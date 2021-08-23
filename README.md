@@ -3,11 +3,14 @@
 ## アプリの概要
 - Google Playに[「コアラさんの旗ふりゲーム」](https://play.google.com/store/apps/details?id=com.yui.koalassimonsaysgame_android)としてリリースしています。
 - 指示された方向に旗をふる15秒間のミニゲームが楽しめるAndroidアプリです。
-- ゲームの得点を登録、表示できるランキング機能もあります。(ローカルランキング)
+- ゲームの得点を登録、表示できるランキング機能もあります。(ローカルランキング、世界ランキング)
 
 ## 開発環境
 - macOS Big Sur 11.4
 - Android Studio 4.1 で開発
+
+## データベース
+- ゲームの得点の世界ランキングにおいて[「Firebase Firestore」](https://firebase.google.com/docs/firestore?hl=ja)を使用しています。
 
 ## アーキテクチャ
 - MVPを採用しています。
