@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color"
+    tools:context=".playGamePage.PlayGameActivity">
+
+    <ImageView
+        android:id="@+id/mrKoala"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/koala_ready" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/flagBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mrKoala">
+
+        <ImageButton
+            android:id="@+id/flag_up"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="@+id/flagBox"
+            app:layout_constraintStart_toStartOf="@+id/flagBox"
+            app:layout_constraintTop_toTopOf="@id/flagBox"
+            app:srcCompat="@drawable/flag_up"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageButton
+            android:id="@+id/flag_left"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/flagBox"
+            app:layout_constraintStart_toStartOf="@+id/flagBox"
+            app:layout_constraintTop_toTopOf="@+id/flagBox"
+            app:srcCompat="@drawable/flag_left"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="534dp" />
+
+        <ImageButton
+            android:id="@+id/flag_right"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/flagBox"
+            app:layout_constraintEnd_toEndOf="@+id/flagBox"
+            app:layout_constraintTop_toTopOf="@+id/flagBox"
+            app:srcCompat="@drawable/flag_right"
+            tools:layout_editor_absoluteX="275dp"
+            tools:layout_editor_absoluteY="534dp" />
+
+        <ImageButton
+            android:id="@+id/flag_down"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/flagBox"
+            app:layout_constraintEnd_toEndOf="@+id/flagBox"
+            app:layout_constraintStart_toStartOf="@+id/flagBox"
+            app:srcCompat="@drawable/flag_down"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="741dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/countDownText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="残り15秒"
+        android:textColor="@color/purple_200"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textColor="@color/purple_200"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countDownText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
