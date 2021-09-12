@@ -10,11 +10,13 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.KoalasSimonSaysGame_android">
-        <activity android:name=".resultPage.RegisterRankingDialogFragment"></activity>
+        <activity android:name=".resultPage.RegisterRankingDialogFragment" />
         <activity android:name=".rankingPage.RankingActivity" />
         <activity android:name=".resultPage.ResultActivity" />
         <activity android:name=".playGamePage.PlayGameActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SplashActivity"
+                  android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
