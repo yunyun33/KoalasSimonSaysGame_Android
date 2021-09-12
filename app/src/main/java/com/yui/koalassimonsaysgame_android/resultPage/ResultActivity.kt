@@ -17,6 +17,9 @@ class ResultActivity : AppCompatActivity(), ResultContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_total_score)
 
+        // タイトルを非表示
+        supportActionBar?.hide()
+
         setOnClickListener()
 
         presenter = ResultPresenter(this, intent)

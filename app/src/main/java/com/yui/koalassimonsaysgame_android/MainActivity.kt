@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // タイトルを非表示
+        supportActionBar?.hide()
+
         setOnClickListener()
     }
 
