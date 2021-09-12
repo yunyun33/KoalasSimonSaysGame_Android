@@ -4,10 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 
 class SplashActivity : AppCompatActivity() {
 
-    private val handler = Handler()
+    private val handler = Handler(Looper.getMainLooper())
     private val runnable = Runnable {
 
         // MainActivityへ遷移させる
@@ -25,8 +26,8 @@ class SplashActivity : AppCompatActivity() {
         // タイトルを非表示。
         supportActionBar?.hide()
 
-        // スプラッシュ表示1000ms(1秒)後にrunnableを呼んでMeinActivityへ遷移させる
-        handler.postDelayed(runnable, 1000)
+        // スプラッシュ表示1000ms(1秒)後にrunnableを呼んでMainActivityへ遷移させる
+        handler.postDelayed(runnable, 1500)
     }
 
     override fun onStop() {
