@@ -19,6 +19,9 @@ class PlayGameActivity : AppCompatActivity(), PlayGameContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_game)
 
+        // タイトルを非表示
+        supportActionBar?.hide()
+
         setOnClickListener()
 
         presenter = PlayGamePresenter(this, applicationContext)
